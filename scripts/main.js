@@ -286,3 +286,14 @@ function initSupportModal() {
     }
   });
 }
+
+/* Set reply email automatically */
+document.querySelectorAll('form').forEach(function(form) {
+  form.addEventListener('submit', function() {
+    var email = form.querySelector('input[name="email"]');
+    var reply = form.querySelector('input[name="_replyto"]');
+    if (email && reply) {
+      reply.value = email.value;
+    }
+  });
+});
