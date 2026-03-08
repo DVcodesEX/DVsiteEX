@@ -146,15 +146,15 @@ function initBookingWizard() {
     currentYear: new Date().getFullYear(),
   };
 
-  // Simulated booked slots (in production this comes from a backend API)
-  // Format: { 'YYYY-MM-DD': ['09:00', '11:00', ...] }
-  const bookedSlots = generateDemoBookedSlots();
-
   const availableTimes = [
     '09:00', '09:30', '10:00', '10:30', '11:00', '11:30',
     '12:00', '12:30', '13:00', '13:30', '14:00', '14:30',
     '15:00', '15:30', '16:00'
   ];
+
+  // Simulated booked slots (in production this comes from a backend API)
+  // Format: { 'YYYY-MM-DD': ['09:00', '11:00', ...] }
+  const bookedSlots = generateDemoBookedSlots();
 
   const dayNames = ['Man', 'Tir', 'Ons', 'Tor', 'Fre', 'Lor', 'Son'];
   const monthNames = [
