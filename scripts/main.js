@@ -605,7 +605,7 @@ function initBookingWizard() {
     }
 
     // Fallback: open mailto
-    window.location.href = 'mailto:booking@digitaleverk.no?subject=' + mailSubject + '&body=' + mailBody;
+    window.location.href = 'mailto:kontakt@digitaleverk.no?subject=' + mailSubject + '&body=' + mailBody;
     showStepMessage(msgEl, 'success', 'E-postklienten din apnes med booking-detaljene. Send e-posten for a fullore bookingen.');
     btn.textContent = originalText;
     btn.disabled = false;
