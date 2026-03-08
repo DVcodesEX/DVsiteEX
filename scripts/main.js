@@ -4,19 +4,18 @@ document.addEventListener('DOMContentLoaded', function () {
   initMobileMenu();
   initFadeIn();
   initPricingScroll();
-  initBookingDropdowns();
+  initPackageLinks();
+  initBookingCalendar();
+  initAjaxForms();
   initSupportModal();
   initActiveNav();
-  initAjaxForms();
 });
 
 /* Header scroll */
 function initHeader() {
   var header = document.querySelector('header');
   if (!header) return;
-  function check() {
-    header.classList.toggle('scrolled', window.scrollY > 40);
-  }
+  function check() { header.classList.toggle('scrolled', window.scrollY > 40); }
   window.addEventListener('scroll', check, { passive: true });
   check();
 }
@@ -27,7 +26,6 @@ function initMobileMenu() {
   var menu = document.querySelector('.mobile-menu');
   var overlay = document.querySelector('.mobile-overlay');
   if (!btn || !menu) return;
-
   function toggle() {
     var open = menu.classList.contains('open');
     btn.classList.toggle('open', !open);
@@ -36,8 +34,7 @@ function initMobileMenu() {
     document.body.style.overflow = open ? '' : 'hidden';
   }
   function close() {
-    btn.classList.remove('open');
-    menu.classList.remove('open');
+    btn.classList.remove('open'); menu.classList.remove('open');
     if (overlay) overlay.classList.remove('open');
     document.body.style.overflow = '';
   }
@@ -58,7 +55,7 @@ function initFadeIn() {
   els.forEach(function (el) { obs.observe(el); });
 }
 
-/* Pricing horizontal scroll */
+/* Pricing scroll */
 function initPricingScroll() {
   var wrap = document.querySelector('.pricing-scroll-wrap');
   if (!wrap) return;
@@ -70,7 +67,7 @@ function initPricingScroll() {
   if (right) right.addEventListener('click', function () { scroll.scrollBy({ left: 300, behavior: 'smooth' }); });
 }
 
-/* Active nav on scroll */
+/* Active nav */
 function initActiveNav() {
   var sections = document.querySelectorAll('section[id]');
   var links = document.querySelectorAll('.nav-links a');
@@ -86,33 +83,48 @@ function initActiveNav() {
   sections.forEach(function (s) { obs.observe(s); });
 }
 
-/* ============================================================
-   BOOKING DROPDOWNS IN PRICING CARDS
-   ============================================================ */
+/* Package links - pre-select package in booking form */
+function initPackageLinks() {
+  document.querySelectorAll('[data-package]').forEach(function (link) {
+    link.addEventListener('click', function () {
+      var pkg = link.getAttribute('data-package');
+      var select = document.getElementById('f-pakke');
+      if (select && pkg) {
+        // Find matching option
+        for (var i = 0; i < select.options.length; i++) {
+          if (select.options[i].value === pkg) {
+            select.selectedIndex = i;
+            break;
+          }
+        }
+      }
+    });
+  });
+}
 
+/* ============================================================
+   BOOKING CALENDAR
+   ============================================================ */
 var MONTHS = ['Januar','Februar','Mars','April','Mai','Juni','Juli','August','September','Oktober','November','Desember'];
-var DAYS = ['Man','Tir','Ons','Tor','Fre','Lor','Son'];
+var WDAYS = ['Man','Tir','Ons','Tor','Fre','Lor','Son'];
 var TIMES = ['09:00','09:30','10:00','10:30','11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00'];
 
 // Demo booked slots
-var demoBooked = buildDemoBooked();
-
-function buildDemoBooked() {
-  var slots = {};
+var demoBooked = {};
+(function () {
   var now = new Date();
   for (var i = 1; i <= 45; i++) {
     var d = new Date(now.getFullYear(), now.getMonth(), now.getDate() + i);
     if (d.getDay() === 0 || d.getDay() === 6) continue;
-    var key = dateKey(d);
+    var key = dk(d);
     var n = Math.floor(Math.random() * 7);
     if (n === 0) continue;
     var shuffled = TIMES.slice().sort(function () { return Math.random() - 0.5; });
-    slots[key] = shuffled.slice(0, n);
+    demoBooked[key] = shuffled.slice(0, n);
   }
-  return slots;
-}
+})();
 
-function dateKey(d) {
+function dk(d) {
   return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
 }
 
@@ -120,139 +132,171 @@ function niceDate(d) {
   return d.getDate() + '. ' + MONTHS[d.getMonth()] + ' ' + d.getFullYear();
 }
 
-function initBookingDropdowns() {
-  document.querySelectorAll('.pricing-card').forEach(function (card) {
-    var toggleBtn = card.querySelector('.booking-toggle');
-    var dropdown = card.querySelector('.booking-dropdown');
-    if (!toggleBtn || !dropdown) return;
+function initBookingCalendar() {
+  var container = document.getElementById('booking-calendar');
+  if (!container) return;
 
-    var packageName = card.querySelector('h3') ? card.querySelector('h3').textContent : '';
+  var state = {
+    month: new Date().getMonth(),
+    year: new Date().getFullYear(),
+    selDate: null,
+    selTime: null
+  };
 
-    var state = {
-      month: new Date().getMonth(),
-      year: new Date().getFullYear(),
-      selDate: null,
-      selTime: null
-    };
+  function render() {
+    var year = state.year, month = state.month;
+    var first = new Date(year, month, 1);
+    var daysInMonth = new Date(year, month + 1, 0).getDate();
+    var startDay = first.getDay() - 1;
+    if (startDay < 0) startDay = 6;
+    var today = new Date(); today.setHours(0, 0, 0, 0);
 
-    toggleBtn.addEventListener('click', function (e) {
+    var h = '<div class="cal-header"><span>' + MONTHS[month] + ' ' + year + '</span>';
+    h += '<div class="cal-nav"><button type="button" class="cal-prev">&lsaquo;</button><button type="button" class="cal-next">&rsaquo;</button></div></div>';
+    h += '<div class="cal-weekdays">';
+    WDAYS.forEach(function (d) { h += '<div class="cal-weekday">' + d + '</div>'; });
+    h += '</div><div class="cal-days">';
+
+    for (var i = 0; i < startDay; i++) h += '<div class="cal-day empty"></div>';
+
+    for (var d = 1; d <= daysInMonth; d++) {
+      var date = new Date(year, month, d);
+      var key = dk(date);
+      var isPast = date < today;
+      var isWeekend = date.getDay() === 0 || date.getDay() === 6;
+      var booked = demoBooked[key] || [];
+      var freeCount = TIMES.filter(function (t) { return booked.indexOf(t) === -1; }).length;
+      var fullyBooked = !isWeekend && !isPast && freeCount === 0;
+
+      var cls = 'cal-day';
+      if (isPast) cls += ' past';
+      else if (isWeekend || fullyBooked) cls += ' unavailable';
+      else cls += ' available';
+      if (state.selDate && dk(state.selDate) === key) cls += ' selected';
+
+      var canClick = !isPast && !isWeekend && !fullyBooked;
+      h += '<div class="' + cls + '"' + (canClick ? ' data-d="' + key + '"' : '') + '>' + d + '</div>';
+    }
+    h += '</div>';
+    h += '<div class="cal-legend"><span><span class="legend-dot green"></span> Ledig</span><span><span class="legend-dot gray"></span> Ikke ledig</span><span><span class="legend-dot white"></span> Helg/forbi</span></div>';
+
+    // Time slots if date selected
+    if (state.selDate) {
+      var selKey = dk(state.selDate);
+      var bookedTimes = demoBooked[selKey] || [];
+      h += '<div style="margin-top:14px;font-size:13px;color:#aaa;">Tider for ' + niceDate(state.selDate) + ':</div>';
+      h += '<div class="time-slots">';
+      TIMES.forEach(function (t) {
+        var isTaken = bookedTimes.indexOf(t) !== -1;
+        if (isTaken) {
+          h += '<div class="time-slot taken">' + t + '</div>';
+        } else {
+          var picked = state.selTime === t ? ' picked' : '';
+          h += '<div class="time-slot free' + picked + '" data-t="' + t + '">' + t + '</div>';
+        }
+      });
+      h += '</div>';
+    }
+
+    container.innerHTML = h;
+
+    // Events
+    var prevBtn = container.querySelector('.cal-prev');
+    var nextBtn = container.querySelector('.cal-next');
+    if (prevBtn) prevBtn.addEventListener('click', function () {
+      var now = new Date();
+      if (state.year === now.getFullYear() && state.month === now.getMonth()) return;
+      state.month--;
+      if (state.month < 0) { state.month = 11; state.year--; }
+      render();
+    });
+    if (nextBtn) nextBtn.addEventListener('click', function () {
+      state.month++;
+      if (state.month > 11) { state.month = 0; state.year++; }
+      render();
+    });
+
+    container.querySelectorAll('.cal-day[data-d]').forEach(function (el) {
+      el.addEventListener('click', function () {
+        var parts = el.getAttribute('data-d').split('-');
+        state.selDate = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
+        state.selTime = null;
+        render();
+      });
+    });
+
+    container.querySelectorAll('.time-slot.free').forEach(function (el) {
+      el.addEventListener('click', function () {
+        state.selTime = el.getAttribute('data-t');
+        // Update hidden fields
+        document.getElementById('hidden-dato').value = niceDate(state.selDate);
+        document.getElementById('hidden-tid').value = state.selTime;
+        render();
+      });
+    });
+  }
+
+  render();
+}
+
+/* ============================================================
+   AJAX FORM SUBMISSIONS
+   ============================================================ */
+function initAjaxForms() {
+  document.querySelectorAll('form[action*="formsubmit.co"]').forEach(function (form) {
+    form.addEventListener('submit', function (e) {
       e.preventDefault();
-      var isOpen = dropdown.classList.contains('open');
-      // Close all other dropdowns
-      document.querySelectorAll('.booking-dropdown.open').forEach(function (d) { d.classList.remove('open'); });
-      if (!isOpen) {
-        dropdown.classList.add('open');
-        renderCalendar(dropdown, state, packageName);
+
+      var btn = form.querySelector('button[type="submit"]');
+      var origText = btn.textContent;
+      btn.textContent = 'Sender...';
+      btn.disabled = true;
+
+      var data = {};
+      new FormData(form).forEach(function (v, k) { data[k] = v; });
+
+      // Autoresponse email to user
+      if (data.epost) {
+        data._autoresponse = 'Hei ' + (data.navn || '') + '!\n\nTakk for din henvendelse til Digitale Verk.\n\n' +
+          (data.pakke ? 'Pakke: ' + data.pakke + '\n' : '') +
+          (data.dato ? 'Dato: ' + data.dato + '\n' : '') +
+          (data.tidspunkt ? 'Tidspunkt: ' + data.tidspunkt + '\n' : '') +
+          '\nVi tar kontakt snart for a bekrefte.\n\nMed vennlig hilsen,\nDigitale Verk\nkontakt@digitaleverk.no';
       }
+
+      var ajaxUrl = form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/');
+
+      fetch(ajaxUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      })
+      .then(function (r) { return r.json(); })
+      .then(function (res) {
+        if (res.success) {
+          showMsg(form, 'ok', 'Sendt! Du vil motta en bekreftelse pa e-post. Vi tar kontakt snart.');
+          form.reset();
+        } else {
+          showMsg(form, 'err', 'Noe gikk galt. Prov igjen eller send e-post til kontakt@digitaleverk.no.');
+        }
+        btn.textContent = origText; btn.disabled = false;
+      })
+      .catch(function () {
+        showMsg(form, 'err', 'Kunne ikke sende. Prov igjen eller send e-post til kontakt@digitaleverk.no.');
+        btn.textContent = origText; btn.disabled = false;
+      });
     });
   });
 }
 
-function renderCalendar(dropdown, state, packageName) {
-  var calDiv = dropdown.querySelector('.cal-area');
-  if (!calDiv) return;
-
-  var year = state.year;
-  var month = state.month;
-  var first = new Date(year, month, 1);
-  var last = new Date(year, month + 1, 0);
-  var daysInMonth = last.getDate();
-  var startDay = first.getDay() - 1;
-  if (startDay < 0) startDay = 6;
-
-  var today = new Date();
-  today.setHours(0, 0, 0, 0);
-
-  var html = '<div class="cal-header"><span>' + MONTHS[month] + ' ' + year + '</span>';
-  html += '<div class="cal-nav"><button class="cal-prev">&lsaquo;</button><button class="cal-next">&rsaquo;</button></div></div>';
-  html += '<div class="cal-weekdays">';
-  DAYS.forEach(function (d) { html += '<div class="cal-weekday">' + d + '</div>'; });
-  html += '</div><div class="cal-days">';
-
-  for (var i = 0; i < startDay; i++) html += '<div class="cal-day empty"></div>';
-
-  for (var d = 1; d <= daysInMonth; d++) {
-    var date = new Date(year, month, d);
-    var key = dateKey(date);
-    var isPast = date < today;
-    var isWeekend = date.getDay() === 0 || date.getDay() === 6;
-    var booked = demoBooked[key] || [];
-    var freeCount = TIMES.filter(function (t) { return booked.indexOf(t) === -1; }).length;
-    var fullyBooked = !isWeekend && !isPast && freeCount === 0;
-
-    var cls = 'cal-day';
-    if (isPast) cls += ' past';
-    else if (isWeekend) cls += ' unavailable';
-    else if (fullyBooked) cls += ' unavailable';
-    else cls += ' available';
-
-    if (state.selDate && dateKey(state.selDate) === key) cls += ' selected';
-
-    var canClick = !isPast && !isWeekend && !fullyBooked;
-    html += '<div class="' + cls + '"' + (canClick ? ' data-date="' + key + '"' : '') + '>' + d + '</div>';
-  }
-
-  html += '</div>';
-  html += '<div class="cal-legend"><span><span class="legend-dot green"></span> Ledig</span><span><span class="legend-dot gray"></span> Ikke ledig</span><span><span class="legend-dot white"></span> Helg/forbi</span></div>';
-
-  // Time slots
-  if (state.selDate) {
-    var dk = dateKey(state.selDate);
-    var bookedTimes = demoBooked[dk] || [];
-    html += '<div style="margin-top:12px;font-size:12px;color:#999;">Tider for ' + niceDate(state.selDate) + ':</div>';
-    html += '<div class="time-slots">';
-    TIMES.forEach(function (t) {
-      var isTaken = bookedTimes.indexOf(t) !== -1;
-      if (isTaken) {
-        html += '<div class="time-slot taken">' + t + '</div>';
-      } else {
-        var picked = state.selTime === t ? ' picked' : '';
-        html += '<div class="time-slot free' + picked + '" data-time="' + t + '">' + t + '</div>';
-      }
-    });
-    html += '</div>';
-  }
-
-  calDiv.innerHTML = html;
-
-  // Event listeners
-  calDiv.querySelector('.cal-prev').addEventListener('click', function () {
-    var now = new Date();
-    if (state.year === now.getFullYear() && state.month === now.getMonth()) return;
-    state.month--;
-    if (state.month < 0) { state.month = 11; state.year--; }
-    renderCalendar(dropdown, state, packageName);
-  });
-
-  calDiv.querySelector('.cal-next').addEventListener('click', function () {
-    state.month++;
-    if (state.month > 11) { state.month = 0; state.year++; }
-    renderCalendar(dropdown, state, packageName);
-  });
-
-  calDiv.querySelectorAll('.cal-day[data-date]').forEach(function (el) {
-    el.addEventListener('click', function () {
-      var parts = el.dataset.date.split('-');
-      state.selDate = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
-      state.selTime = null;
-      renderCalendar(dropdown, state, packageName);
-    });
-  });
-
-  calDiv.querySelectorAll('.time-slot.free').forEach(function (el) {
-    el.addEventListener('click', function () {
-      state.selTime = el.dataset.time;
-      renderCalendar(dropdown, state, packageName);
-      // Update hidden fields
-      var form = dropdown.querySelector('form');
-      if (form) {
-        var dateInput = form.querySelector('[name="dato"]');
-        var timeInput = form.querySelector('[name="tidspunkt"]');
-        if (dateInput) dateInput.value = niceDate(state.selDate);
-        if (timeInput) timeInput.value = state.selTime;
-      }
-    });
-  });
+function showMsg(form, type, text) {
+  var old = form.querySelector('.form-msg');
+  if (old) old.remove();
+  var el = document.createElement('div');
+  el.className = 'form-msg ' + type;
+  el.textContent = text;
+  form.appendChild(el);
+  setTimeout(function () { if (el.parentNode) el.remove(); }, 10000);
 }
 
 /* ============================================================
@@ -267,101 +311,17 @@ function initSupportModal() {
   document.querySelectorAll('[data-support]').forEach(function (btn) {
     btn.addEventListener('click', function (e) {
       e.preventDefault();
-      if (planInput) planInput.value = btn.dataset.support;
+      if (planInput) planInput.value = btn.getAttribute('data-support');
       overlay.classList.add('open');
       document.body.style.overflow = 'hidden';
     });
   });
 
-  if (closeBtn) {
-    closeBtn.addEventListener('click', function () {
-      overlay.classList.remove('open');
-      document.body.style.overflow = '';
-    });
-  }
+  if (closeBtn) closeBtn.addEventListener('click', function () {
+    overlay.classList.remove('open'); document.body.style.overflow = '';
+  });
 
   overlay.addEventListener('click', function (e) {
-    if (e.target === overlay) {
-      overlay.classList.remove('open');
-      document.body.style.overflow = '';
-    }
+    if (e.target === overlay) { overlay.classList.remove('open'); document.body.style.overflow = ''; }
   });
-}
-
-/* ============================================================
-   AJAX FORM SUBMISSIONS - stay on page, show confirmation
-   ============================================================ */
-function initAjaxForms() {
-  document.querySelectorAll('form[action*="formsubmit.co"]').forEach(function (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      var btn = form.querySelector('button[type="submit"]');
-      var originalText = btn.textContent;
-      btn.textContent = 'Sender...';
-      btn.disabled = true;
-
-      // Collect form data as JSON
-      var data = {};
-      new FormData(form).forEach(function (value, key) {
-        data[key] = value;
-      });
-
-      // Add autoresponse for user confirmation email
-      var userEmail = data.epost || '';
-      if (userEmail) {
-        data._autoresponse = 'Hei ' + (data.navn || '') + '!\n\nTakk for din henvendelse til Digitale Verk.\n\nVi har mottatt bookingen din' +
-          (data.dato ? ' for ' + data.dato : '') +
-          (data.tidspunkt ? ' kl. ' + data.tidspunkt : '') +
-          (data.pakke ? ' (' + data.pakke + ')' : '') +
-          '.\n\nVi tar kontakt snart for a bekrefte.\n\nMed vennlig hilsen,\nDigitale Verk\nkontakt@digitaleverk.no';
-      }
-
-      // Use AJAX endpoint
-      var ajaxUrl = form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/');
-
-      fetch(ajaxUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(data)
-      })
-      .then(function (response) { return response.json(); })
-      .then(function (result) {
-        if (result.success) {
-          // Show success message
-          showFormMessage(form, 'ok', 'Booking sendt! Du vil motta en bekreftelse pa e-post. Vi tar kontakt snart.');
-          form.reset();
-          // Reset hidden fields
-          var datoField = form.querySelector('[name="dato"]');
-          var tidField = form.querySelector('[name="tidspunkt"]');
-          if (datoField) datoField.value = '';
-          if (tidField) tidField.value = '';
-        } else {
-          showFormMessage(form, 'err', 'Noe gikk galt. Vennligst prov igjen eller send e-post til kontakt@digitaleverk.no.');
-        }
-        btn.textContent = originalText;
-        btn.disabled = false;
-      })
-      .catch(function () {
-        showFormMessage(form, 'err', 'Kunne ikke sende. Sjekk internett-tilkoblingen eller send e-post til kontakt@digitaleverk.no.');
-        btn.textContent = originalText;
-        btn.disabled = false;
-      });
-    });
-  });
-}
-
-function showFormMessage(form, type, text) {
-  // Remove existing message
-  var existing = form.querySelector('.form-msg');
-  if (existing) existing.remove();
-
-  var msg = document.createElement('div');
-  msg.className = 'form-msg ' + type;
-  msg.textContent = text;
-  form.appendChild(msg);
-
-  setTimeout(function () {
-    if (msg.parentNode) msg.remove();
-  }, 10000);
 }

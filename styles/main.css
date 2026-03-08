@@ -208,6 +208,18 @@ header.scrolled{background:rgba(15,15,16,.88);backdrop-filter:blur(14px);-webkit
 .support-form-box .sub{font-size:14px;color:#888;margin-bottom:20px}
 .support-close{position:absolute;top:14px;right:14px;width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,.06);border:none;color:#ccc;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center}
 
+/* ============ BOOKING SECTION ============ */
+.booking{border-top:1px solid rgba(255,255,255,.05);background:radial-gradient(circle at 30% 50%,rgba(201,176,122,.06),transparent 50%),radial-gradient(circle at 70% 80%,rgba(201,176,122,.04),transparent 40%)}
+.booking-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start}
+.booking-info h2{margin-bottom:14px}
+.booking-usps{display:flex;flex-direction:column;gap:18px}
+.usp-item{display:flex;align-items:flex-start;gap:14px}
+.usp-icon{width:40px;height:40px;border-radius:10px;background:rgba(201,176,122,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.usp-item h4{font-size:15px;margin-bottom:2px}
+.usp-item p{font-size:13px;color:#888;line-height:1.4}
+.booking-form-card{padding:36px;border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.07);backdrop-filter:blur(8px)}
+.booking-form-card h3{font-size:20px;margin-bottom:18px}
+
 /* ============ CONTACT ============ */
 .contact{border-top:1px solid rgba(255,255,255,.05)}
 .contact-content{max-width:560px}
@@ -239,6 +251,7 @@ footer{border-top:1px solid rgba(255,255,255,.05);padding:40px 0 36px}
   .portfolio-grid{grid-template-columns:repeat(2,1fr)}
   .nav-links,.nav-cta{display:none}.hamburger{display:flex}.mobile-menu{display:flex}
   .pricing-arrow{display:none}
+  .booking-grid{grid-template-columns:1fr;gap:36px}
 }
 @media(max-width:640px){
   .section{padding:60px 0}.hero{padding-top:80px;min-height:auto}.hero-text{font-size:16px}
