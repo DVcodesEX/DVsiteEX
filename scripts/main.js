@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
   initBookingDropdowns();
   initSupportModal();
   initActiveNav();
+  initAjaxForms();
 });
 
 /* Header scroll */
@@ -285,4 +286,82 @@ function initSupportModal() {
       document.body.style.overflow = '';
     }
   });
+}
+
+/* ============================================================
+   AJAX FORM SUBMISSIONS - stay on page, show confirmation
+   ============================================================ */
+function initAjaxForms() {
+  document.querySelectorAll('form[action*="formsubmit.co"]').forEach(function (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      var btn = form.querySelector('button[type="submit"]');
+      var originalText = btn.textContent;
+      btn.textContent = 'Sender...';
+      btn.disabled = true;
+
+      // Collect form data as JSON
+      var data = {};
+      new FormData(form).forEach(function (value, key) {
+        data[key] = value;
+      });
+
+      // Add autoresponse for user confirmation email
+      var userEmail = data.epost || '';
+      if (userEmail) {
+        data._autoresponse = 'Hei ' + (data.navn || '') + '!\n\nTakk for din henvendelse til Digitale Verk.\n\nVi har mottatt bookingen din' +
+          (data.dato ? ' for ' + data.dato : '') +
+          (data.tidspunkt ? ' kl. ' + data.tidspunkt : '') +
+          (data.pakke ? ' (' + data.pakke + ')' : '') +
+          '.\n\nVi tar kontakt snart for a bekrefte.\n\nMed vennlig hilsen,\nDigitale Verk\nkontakt@digitaleverk.no';
+      }
+
+      // Use AJAX endpoint
+      var ajaxUrl = form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/');
+
+      fetch(ajaxUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      })
+      .then(function (response) { return response.json(); })
+      .then(function (result) {
+        if (result.success) {
+          // Show success message
+          showFormMessage(form, 'ok', 'Booking sendt! Du vil motta en bekreftelse pa e-post. Vi tar kontakt snart.');
+          form.reset();
+          // Reset hidden fields
+          var datoField = form.querySelector('[name="dato"]');
+          var tidField = form.querySelector('[name="tidspunkt"]');
+          if (datoField) datoField.value = '';
+          if (tidField) tidField.value = '';
+        } else {
+          showFormMessage(form, 'err', 'Noe gikk galt. Vennligst prov igjen eller send e-post til kontakt@digitaleverk.no.');
+        }
+        btn.textContent = originalText;
+        btn.disabled = false;
+      })
+      .catch(function () {
+        showFormMessage(form, 'err', 'Kunne ikke sende. Sjekk internett-tilkoblingen eller send e-post til kontakt@digitaleverk.no.');
+        btn.textContent = originalText;
+        btn.disabled = false;
+      });
+    });
+  });
+}
+
+function showFormMessage(form, type, text) {
+  // Remove existing message
+  var existing = form.querySelector('.form-msg');
+  if (existing) existing.remove();
+
+  var msg = document.createElement('div');
+  msg.className = 'form-msg ' + type;
+  msg.textContent = text;
+  form.appendChild(msg);
+
+  setTimeout(function () {
+    if (msg.parentNode) msg.remove();
+  }, 10000);
 }
