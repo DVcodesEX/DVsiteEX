@@ -1,93 +1,395 @@
 <!DOCTYPE html>
 <html lang="no">
-
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digitale Verk</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="ikon.png">
+  <link rel="shortcut icon" href="ikon.png">
 
-<meta charset="UTF-8">
-<title>Digitale Verk</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-<link rel="icon" type="image/png" href="ikon.png">
+    html {
+      scroll-behavior: smooth;
+    }
 
-<style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f5;
+      color: #222;
+      line-height: 1.6;
+    }
 
-body{
-font-family: Arial, sans-serif;
-background:#f5f5f5;
-display:flex;
-align-items:center;
-justify-content:center;
-height:100vh;
-margin:0;
-}
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
-.box{
-background:white;
-padding:50px;
-border-radius:12px;
-width:520px;
-text-align:center;
-box-shadow:0 15px 35px rgba(0,0,0,0.08);
-}
+    header {
+      background: white;
+      border-bottom: 1px solid #e5e5e5;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
 
-.logo{
-width:160px;
-margin-bottom:20px;
-}
+    .nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 18px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-h1{
-font-size:36px;
-margin-bottom:10px;
-}
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: bold;
+      font-size: 20px;
+    }
 
-.tagline{
-font-size:18px;
-color:#555;
-margin-bottom:25px;
-}
+    .brand img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      border-radius: 8px;
+    }
 
-p{
-font-size:16px;
-color:#444;
-line-height:1.6;
-}
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      font-size: 15px;
+      color: #555;
+    }
 
-.dev{
-margin-top:25px;
-font-style:italic;
-color:#888;
-}
+    .nav-links a:hover {
+      color: #000;
+    }
 
-</style>
+    .hero {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 90px 20px 70px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 40px;
+      align-items: center;
+    }
 
+    .hero h1 {
+      font-size: 58px;
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      color: #555;
+      max-width: 600px;
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 22px;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: #222;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #000;
+    }
+
+    .btn-secondary {
+      background: white;
+      border: 1px solid #ddd;
+      color: #222;
+    }
+
+    .btn-secondary:hover {
+      border-color: #bbb;
+    }
+
+    .hero-card {
+      background: white;
+      border-radius: 18px;
+      padding: 35px;
+      box-shadow: 0 14px 35px rgba(0,0,0,0.07);
+      text-align: center;
+    }
+
+    .hero-card img {
+      width: 150px;
+      margin-bottom: 20px;
+    }
+
+    .hero-card h3 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .hero-card p {
+      font-size: 16px;
+      color: #666;
+      margin: 0;
+    }
+
+    section {
+      padding: 80px 20px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 36px;
+      margin-bottom: 14px;
+      text-align: center;
+    }
+
+    .section-text {
+      text-align: center;
+      color: #666;
+      max-width: 760px;
+      margin: 0 auto 45px;
+      font-size: 18px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+    }
+
+    .card h3 {
+      margin-bottom: 12px;
+      font-size: 22px;
+    }
+
+    .card p {
+      color: #666;
+      font-size: 16px;
+    }
+
+    .products-box {
+      background: white;
+      border-radius: 18px;
+      padding: 45px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+    }
+
+    .products-box h3 {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .products-box p {
+      color: #666;
+      font-size: 17px;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    .contact-box {
+      background: #222;
+      color: white;
+      border-radius: 18px;
+      padding: 45px;
+      text-align: center;
+    }
+
+    .contact-box h2 {
+      font-size: 34px;
+      margin-bottom: 14px;
+    }
+
+    .contact-box p {
+      color: #ddd;
+      margin-bottom: 22px;
+      font-size: 18px;
+    }
+
+    footer {
+      padding: 28px 20px;
+      text-align: center;
+      color: #777;
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 60px;
+      }
+
+      .hero h1 {
+        font-size: 42px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-<div class="box">
+  <header>
+    <div class="nav">
+      <a href="#" class="brand">
+        <img src="ikon.png" alt="Digitale Verk logo">
+        <span>Digitale Verk</span>
+      </a>
 
-<img src="logo.png" alt="Digitale Verk logo" class="logo">
+      <nav class="nav-links">
+        <a href="#om">Om</a>
+        <a href="#tjenester">Tjenester</a>
+        <a href="#produkter">Produkter</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+    </div>
+  </header>
 
-<h1>Digitale Verk</h1>
+  <main>
+    <section class="hero">
+      <div>
+        <h1>Digitale løsninger for moderne bedrifter</h1>
+        <p>
+          Digitale Verk utvikler interne systemer, bookingsider, kursplattformer
+          og andre digitale løsninger som gjør arbeidshverdagen enklere og mer oversiktlig.
+        </p>
 
-<div class="tagline">
-Interne systemer • Bookingløsninger • Digitale verktøy
-</div>
+        <div class="hero-buttons">
+          <a href="#kontakt" class="btn btn-primary">Ta kontakt</a>
+          <a href="#produkter" class="btn btn-secondary">Se produkter</a>
+        </div>
+      </div>
 
-<p>
-Digitale Verk utvikler digitale systemer for bedrifter.
-</p>
+      <div class="hero-card">
+        <img src="logo.png" alt="Digitale Verk logo">
+        <h3>Bygget for bedrifter</h3>
+        <p>
+          Skreddersydde digitale verktøy som støtter drift, struktur og vekst.
+        </p>
+      </div>
+    </section>
 
-<p>
-Vi lager blant annet interne systemer for ansatte, bookingsider,
-kursplattformer med moduler og andre digitale løsninger
-som gjør arbeidshverdagen enklere og mer oversiktlig.
-</p>
+    <section id="om">
+      <div class="container">
+        <h2 class="section-title">Om Digitale Verk</h2>
+        <p class="section-text">
+          Vi bygger praktiske digitale systemer for bedrifter som ønsker bedre flyt,
+          enklere arbeidshverdager og løsninger tilpasset egne behov.
+        </p>
+      </div>
+    </section>
 
-<p class="dev">
-Nettsiden er under utvikling.
-</p>
+    <section id="tjenester">
+      <div class="container">
+        <h2 class="section-title">Tjenester</h2>
+        <p class="section-text">
+          Vi utvikler løsninger som er enkle å bruke, profesjonelle å presentere
+          og nyttige i det daglige arbeidet.
+        </p>
 
-</div>
+        <div class="cards">
+          <div class="card">
+            <h3>Interne systemer</h3>
+            <p>
+              Løsninger for ansatte, arbeidsflyt, oversikt, registrering og intern struktur.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Bookingløsninger</h3>
+            <p>
+              Enkle og effektive bookingsider for tjenester, avtaler og kundehåndtering.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Kursplattformer</h3>
+            <p>
+              Digitale kursløsninger med moduler, innhold og enkel tilgang for brukerne.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="produkter">
+      <div class="container">
+        <h2 class="section-title">Produkter</h2>
+        <p class="section-text">
+          Her kommer det etter hvert ferdige produkter, maler og digitale løsninger.
+        </p>
+
+        <div class="products-box">
+          <h3>Produkter kommer snart</h3>
+          <p>
+            Vi jobber med å bygge opp en produktoversikt. Denne siden vil snart vise
+            ferdige løsninger, konsepter og maler som kan tilpasses ulike bedrifter.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontakt">
+      <div class="container">
+        <div class="contact-box">
+          <h2>Ta kontakt</h2>
+          <p>
+            Ønsker du en digital løsning for din bedrift, eller vil du høre mer om hva vi bygger?
+          </p>
+          <a href="mailto:kontakt@digitaleverk.no" class="btn btn-primary">kontakt@digitaleverk.no</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Digitale Verk. Alle rettigheter reservert.
+  </footer>
 
 </body>
 </html>
