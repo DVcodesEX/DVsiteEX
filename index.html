@@ -30,17 +30,17 @@
       <a href="#tjenester">Tjenester</a>
       <a href="#portefolje">Portefolje</a>
       <a href="#priser">Priser</a>
+      <a href="#booking">Book mote</a>
       <a href="#support">Support</a>
-      <a href="#kontakt">Kontakt</a>
     </nav>
-    <a href="#priser" class="btn btn-primary btn-sm nav-cta">Se pakker</a>
+    <a href="#booking" class="btn btn-primary btn-sm nav-cta">Book gratis mote</a>
     <button class="hamburger" aria-label="Meny"><span></span><span></span><span></span></button>
   </div>
 </header>
 <div class="mobile-overlay" aria-hidden="true"></div>
 <nav class="mobile-menu" aria-label="Mobilmeny">
-  <a href="#tjenester">Tjenester</a><a href="#portefolje">Portefolje</a><a href="#priser">Priser</a><a href="#support">Support</a><a href="#kontakt">Kontakt</a>
-  <a href="#priser" class="btn btn-primary" style="margin-top:14px;text-align:center">Se pakker</a>
+  <a href="#tjenester">Tjenester</a><a href="#portefolje">Portefolje</a><a href="#priser">Priser</a><a href="#booking">Book mote</a><a href="#support">Support</a><a href="#kontakt">Kontakt</a>
+  <a href="#booking" class="btn btn-primary" style="margin-top:14px;text-align:center">Book gratis mote</a>
 </nav>
 
 <main id="main">
@@ -57,8 +57,8 @@
         Forste mote er alltid gratis
       </div>
       <div class="hero-buttons">
-        <a href="#priser" class="btn btn-primary">Se pakker og priser</a>
-        <a href="#tjenester" class="btn btn-secondary">Var tjenester</a>
+        <a href="#booking" class="btn btn-primary">Book gratis mote</a>
+        <a href="#priser" class="btn btn-secondary">Se priser</a>
       </div>
       <div class="info-row"><span>Dashboards</span><span>Bookingsider</span><span>Kursplattformer</span><span>Nettsider</span></div>
     </div>
@@ -139,13 +139,13 @@
   </div>
 </section>
 
-<!-- PRISER - 8 PAKKER -->
+<!-- PRISER - 8 PAKKER (clean, no dropdowns) -->
 <section id="priser" class="section pricing">
   <div class="container-wide">
     <div class="fade-in" style="width:min(1120px,calc(100% - 40px));margin:0 auto">
       <div class="section-label">Priser</div>
       <h2 class="section-title">Velg en pakke</h2>
-      <p class="section-sub">8 pakker fra enkel til avansert. Velg den som passer, trykk &laquo;Bestill mote&raquo; og book et gratis mote med oss. Alle priser er veiledende.</p>
+      <p class="section-sub">8 pakker fra enkel til avansert. Alle priser er veiledende - velg den som passer og book et gratis mote.</p>
     </div>
     <div class="pricing-scroll-wrap fade-in">
       <p class="pricing-hint">&larr; Bla for a se alle pakker &rarr;</p>
@@ -153,7 +153,6 @@
       <button class="pricing-arrow right" aria-label="Bla hoyre">&rsaquo;</button>
       <div class="pricing-scroll">
 
-        <!-- 1 Visittkort -->
         <div class="pricing-card">
           <h3>Visittkort</h3>
           <div class="pricing-price">4 990 kr</div>
@@ -166,27 +165,9 @@
             <li><span class="ck">&#10003;</span> Grunnleggende SEO</li>
           </ul>
           <div class="pricing-examples"><div class="pricing-examples-label">Eksempler</div><div class="pricing-examples-list"><span>Enkel landingsside</span><span>Digital visittkort-side</span><span>Arrangementsside</span></div></div>
-          <button class="btn btn-secondary btn-block booking-toggle">Bestill mote</button>
-          <div class="booking-dropdown">
-            <h4>Book gratis mote - Visittkort</h4>
-            <form action="https://formsubmit.co/kontakt@digitaleverk.no" method="POST">
-              <input type="hidden" name="_subject" value="Ny booking: Visittkort-pakken">
-              <input type="hidden" name="_captcha" value="false">
-              <input type="hidden" name="_template" value="table">
-              <input type="hidden" name="pakke" value="Visittkort (4 990 kr)">
-              <input type="hidden" name="dato" value="">
-              <input type="hidden" name="tidspunkt" value="">
-              <div class="form-group"><label>Navn *</label><input type="text" name="navn" required placeholder="Ditt navn"></div>
-              <div class="form-group"><label>E-post *</label><input type="email" name="epost" required placeholder="din@epost.no"></div>
-              <div class="form-group"><label>Telefon *</label><input type="tel" name="telefon" required placeholder="+47 000 00 000"></div>
-              <div class="form-group"><label>Tema/kommentar <span class="opt">(valgfritt)</span></label><textarea name="kommentar" placeholder="Hva onsker du a snakke om?"></textarea></div>
-              <div class="form-group"><label>Velg dato og tid</label><div class="cal-area"></div></div>
-              <button type="submit" class="btn btn-primary btn-block">Send booking</button>
-            </form>
-          </div>
+          <a href="#booking" class="btn btn-secondary btn-block" data-package="Visittkort (4 990 kr)">Book mote</a>
         </div>
 
-        <!-- 2 Starter -->
         <div class="pricing-card">
           <h3>Starter</h3>
           <div class="pricing-price">9 990 kr</div>
@@ -199,27 +180,9 @@
             <li><span class="ck">&#10003;</span> 1 runde tilbakemeldinger</li>
           </ul>
           <div class="pricing-examples"><div class="pricing-examples-label">Eksempler</div><div class="pricing-examples-list"><span>Bedriftsside med 3 sider</span><span>Portefolje-nettside</span><span>Restaurantside med meny</span></div></div>
-          <button class="btn btn-secondary btn-block booking-toggle">Bestill mote</button>
-          <div class="booking-dropdown">
-            <h4>Book gratis mote - Starter</h4>
-            <form action="https://formsubmit.co/kontakt@digitaleverk.no" method="POST">
-              <input type="hidden" name="_subject" value="Ny booking: Starter-pakken">
-              <input type="hidden" name="_captcha" value="false">
-              <input type="hidden" name="_template" value="table">
-              <input type="hidden" name="pakke" value="Starter (9 990 kr)">
-              <input type="hidden" name="dato" value="">
-              <input type="hidden" name="tidspunkt" value="">
-              <div class="form-group"><label>Navn *</label><input type="text" name="navn" required placeholder="Ditt navn"></div>
-              <div class="form-group"><label>E-post *</label><input type="email" name="epost" required placeholder="din@epost.no"></div>
-              <div class="form-group"><label>Telefon *</label><input type="tel" name="telefon" required placeholder="+47 000 00 000"></div>
-              <div class="form-group"><label>Tema/kommentar <span class="opt">(valgfritt)</span></label><textarea name="kommentar" placeholder="Hva onsker du a snakke om?"></textarea></div>
-              <div class="form-group"><label>Velg dato og tid</label><div class="cal-area"></div></div>
-              <button type="submit" class="btn btn-primary btn-block">Send booking</button>
-            </form>
-          </div>
+          <a href="#booking" class="btn btn-secondary btn-block" data-package="Starter (9 990 kr)">Book mote</a>
         </div>
 
-        <!-- 3 Bedrift -->
         <div class="pricing-card">
           <h3>Bedrift</h3>
           <div class="pricing-price">19 990 kr</div>
@@ -233,27 +196,9 @@
             <li><span class="ck">&#10003;</span> 2 runder tilbakemeldinger</li>
           </ul>
           <div class="pricing-examples"><div class="pricing-examples-label">Eksempler</div><div class="pricing-examples-list"><span>Bedriftsside med blogg</span><span>Eiendomsmegler-side</span><span>Klinikk/helseside</span></div></div>
-          <button class="btn btn-secondary btn-block booking-toggle">Bestill mote</button>
-          <div class="booking-dropdown">
-            <h4>Book gratis mote - Bedrift</h4>
-            <form action="https://formsubmit.co/kontakt@digitaleverk.no" method="POST">
-              <input type="hidden" name="_subject" value="Ny booking: Bedrift-pakken">
-              <input type="hidden" name="_captcha" value="false">
-              <input type="hidden" name="_template" value="table">
-              <input type="hidden" name="pakke" value="Bedrift (19 990 kr)">
-              <input type="hidden" name="dato" value="">
-              <input type="hidden" name="tidspunkt" value="">
-              <div class="form-group"><label>Navn *</label><input type="text" name="navn" required placeholder="Ditt navn"></div>
-              <div class="form-group"><label>E-post *</label><input type="email" name="epost" required placeholder="din@epost.no"></div>
-              <div class="form-group"><label>Telefon *</label><input type="tel" name="telefon" required placeholder="+47 000 00 000"></div>
-              <div class="form-group"><label>Tema/kommentar <span class="opt">(valgfritt)</span></label><textarea name="kommentar" placeholder="Hva onsker du a snakke om?"></textarea></div>
-              <div class="form-group"><label>Velg dato og tid</label><div class="cal-area"></div></div>
-              <button type="submit" class="btn btn-primary btn-block">Send booking</button>
-            </form>
-          </div>
+          <a href="#booking" class="btn btn-secondary btn-block" data-package="Bedrift (19 990 kr)">Book mote</a>
         </div>
 
-        <!-- 4 Booking -->
         <div class="pricing-card featured">
           <div class="pricing-badge">Populaer</div>
           <h3>Booking</h3>
@@ -265,31 +210,12 @@
             <li><span class="ck">&#10003;</span> Bookingsystem m/ kalender</li>
             <li><span class="ck">&#10003;</span> E-post/SMS-varsler</li>
             <li><span class="ck">&#10003;</span> Kundeportal</li>
-            <li><span class="ck">&#10003;</span> 3 runder tilbakemeldinger</li>
           </ul>
           <div class="pricing-support">1 mnd gratis support inkludert</div>
           <div class="pricing-examples"><div class="pricing-examples-label">Eksempler</div><div class="pricing-examples-list"><span>Frisorsalong-booking</span><span>Konsultasjon-booking</span><span>Treningssenter-booking</span></div></div>
-          <button class="btn btn-primary btn-block booking-toggle">Bestill mote</button>
-          <div class="booking-dropdown">
-            <h4>Book gratis mote - Booking</h4>
-            <form action="https://formsubmit.co/kontakt@digitaleverk.no" method="POST">
-              <input type="hidden" name="_subject" value="Ny booking: Booking-pakken">
-              <input type="hidden" name="_captcha" value="false">
-              <input type="hidden" name="_template" value="table">
-              <input type="hidden" name="pakke" value="Booking (29 990 kr)">
-              <input type="hidden" name="dato" value="">
-              <input type="hidden" name="tidspunkt" value="">
-              <div class="form-group"><label>Navn *</label><input type="text" name="navn" required placeholder="Ditt navn"></div>
-              <div class="form-group"><label>E-post *</label><input type="email" name="epost" required placeholder="din@epost.no"></div>
-              <div class="form-group"><label>Telefon *</label><input type="tel" name="telefon" required placeholder="+47 000 00 000"></div>
-              <div class="form-group"><label>Tema/kommentar <span class="opt">(valgfritt)</span></label><textarea name="kommentar" placeholder="Hva onsker du a snakke om?"></textarea></div>
-              <div class="form-group"><label>Velg dato og tid</label><div class="cal-area"></div></div>
-              <button type="submit" class="btn btn-primary btn-block">Send booking</button>
-            </form>
-          </div>
+          <a href="#booking" class="btn btn-primary btn-block" data-package="Booking (29 990 kr)">Book mote</a>
         </div>
 
-        <!-- 5 Dashboard -->
         <div class="pricing-card">
           <h3>Dashboard</h3>
           <div class="pricing-price">39 990 kr</div>
@@ -300,31 +226,12 @@
             <li><span class="ck">&#10003;</span> Inntil 5 datakilder</li>
             <li><span class="ck">&#10003;</span> Sanntid og historikk</li>
             <li><span class="ck">&#10003;</span> Eksport PDF/Excel</li>
-            <li><span class="ck">&#10003;</span> Brukerroller</li>
           </ul>
           <div class="pricing-support">2 mnd gratis support inkludert</div>
           <div class="pricing-examples"><div class="pricing-examples-label">Eksempler</div><div class="pricing-examples-list"><span>Salgs-dashboard</span><span>Prosjektoversikt</span><span>HR/ansatt-dashboard</span></div></div>
-          <button class="btn btn-secondary btn-block booking-toggle">Bestill mote</button>
-          <div class="booking-dropdown">
-            <h4>Book gratis mote - Dashboard</h4>
-            <form action="https://formsubmit.co/kontakt@digitaleverk.no" method="POST">
-              <input type="hidden" name="_subject" value="Ny booking: Dashboard-pakken">
-              <input type="hidden" name="_captcha" value="false">
-              <input type="hidden" name="_template" value="table">
-              <input type="hidden" name="pakke" value="Dashboard (39 990 kr)">
-              <input type="hidden" name="dato" value="">
-              <input type="hidden" name="tidspunkt" value="">
-              <div class="form-group"><label>Navn *</label><input type="text" name="navn" required placeholder="Ditt navn"></div>
-              <div class="form-group"><label>E-post *</label><input type="email" name="epost" required placeholder="din@epost.no"></div>
-              <div class="form-group"><label>Telefon *</label><input type="tel" name="telefon" required placeholder="+47 000 00 000"></div>
-              <div class="form-group"><label>Tema/kommentar <span class="opt">(valgfritt)</span></label><textarea name="kommentar" placeholder="Hva onsker du a snakke om?"></textarea></div>
-              <div class="form-group"><label>Velg dato og tid</label><div class="cal-area"></div></div>
-              <button type="submit" class="btn btn-primary btn-block">Send booking</button>
-            </form>
-          </div>
+          <a href="#booking" class="btn btn-secondary btn-block" data-package="Dashboard (39 990 kr)">Book mote</a>
         </div>
 
-        <!-- 6 Kursplattform -->
         <div class="pricing-card">
           <h3>Kursplattform</h3>
           <div class="pricing-price">49 990 kr</div>
@@ -333,33 +240,14 @@
           <ul class="pricing-features">
             <li><span class="ck">&#10003;</span> Ubegrenset kurs/moduler</li>
             <li><span class="ck">&#10003;</span> Video, tekst og quiz</li>
-            <li><span class="ck">&#10003;</span> Fremgangsvisning</li>
             <li><span class="ck">&#10003;</span> Sertifikatgenerering</li>
             <li><span class="ck">&#10003;</span> Admin-panel</li>
           </ul>
           <div class="pricing-support">3 mnd gratis support inkludert</div>
           <div class="pricing-examples"><div class="pricing-examples-label">Eksempler</div><div class="pricing-examples-list"><span>Bedriftsintern opplaering</span><span>Online kursportal</span><span>Sertifiseringsprogram</span></div></div>
-          <button class="btn btn-secondary btn-block booking-toggle">Bestill mote</button>
-          <div class="booking-dropdown">
-            <h4>Book gratis mote - Kursplattform</h4>
-            <form action="https://formsubmit.co/kontakt@digitaleverk.no" method="POST">
-              <input type="hidden" name="_subject" value="Ny booking: Kursplattform-pakken">
-              <input type="hidden" name="_captcha" value="false">
-              <input type="hidden" name="_template" value="table">
-              <input type="hidden" name="pakke" value="Kursplattform (49 990 kr)">
-              <input type="hidden" name="dato" value="">
-              <input type="hidden" name="tidspunkt" value="">
-              <div class="form-group"><label>Navn *</label><input type="text" name="navn" required placeholder="Ditt navn"></div>
-              <div class="form-group"><label>E-post *</label><input type="email" name="epost" required placeholder="din@epost.no"></div>
-              <div class="form-group"><label>Telefon *</label><input type="tel" name="telefon" required placeholder="+47 000 00 000"></div>
-              <div class="form-group"><label>Tema/kommentar <span class="opt">(valgfritt)</span></label><textarea name="kommentar" placeholder="Hva onsker du a snakke om?"></textarea></div>
-              <div class="form-group"><label>Velg dato og tid</label><div class="cal-area"></div></div>
-              <button type="submit" class="btn btn-primary btn-block">Send booking</button>
-            </form>
-          </div>
+          <a href="#booking" class="btn btn-secondary btn-block" data-package="Kursplattform (49 990 kr)">Book mote</a>
         </div>
 
-        <!-- 7 Premium -->
         <div class="pricing-card featured">
           <div class="pricing-badge">Mest verdi</div>
           <h3>Premium</h3>
@@ -371,31 +259,12 @@
             <li><span class="ck">&#10003;</span> Avanserte API-integrasjoner</li>
             <li><span class="ck">&#10003;</span> Automatisering/workflows</li>
             <li><span class="ck">&#10003;</span> Brukertesting</li>
-            <li><span class="ck">&#10003;</span> Ubegrenset tilbakemeldinger</li>
           </ul>
           <div class="pricing-support">6 mnd gratis support inkludert</div>
           <div class="pricing-examples"><div class="pricing-examples-label">Eksempler</div><div class="pricing-examples-list"><span>Komplett bedriftsplattform</span><span>CRM + dashboard</span><span>Booking + analyse</span></div></div>
-          <button class="btn btn-primary btn-block booking-toggle">Bestill mote</button>
-          <div class="booking-dropdown">
-            <h4>Book gratis mote - Premium</h4>
-            <form action="https://formsubmit.co/kontakt@digitaleverk.no" method="POST">
-              <input type="hidden" name="_subject" value="Ny booking: Premium-pakken">
-              <input type="hidden" name="_captcha" value="false">
-              <input type="hidden" name="_template" value="table">
-              <input type="hidden" name="pakke" value="Premium (79 990 kr)">
-              <input type="hidden" name="dato" value="">
-              <input type="hidden" name="tidspunkt" value="">
-              <div class="form-group"><label>Navn *</label><input type="text" name="navn" required placeholder="Ditt navn"></div>
-              <div class="form-group"><label>E-post *</label><input type="email" name="epost" required placeholder="din@epost.no"></div>
-              <div class="form-group"><label>Telefon *</label><input type="tel" name="telefon" required placeholder="+47 000 00 000"></div>
-              <div class="form-group"><label>Tema/kommentar <span class="opt">(valgfritt)</span></label><textarea name="kommentar" placeholder="Hva onsker du a snakke om?"></textarea></div>
-              <div class="form-group"><label>Velg dato og tid</label><div class="cal-area"></div></div>
-              <button type="submit" class="btn btn-primary btn-block">Send booking</button>
-            </form>
-          </div>
+          <a href="#booking" class="btn btn-primary btn-block" data-package="Premium (79 990 kr)">Book mote</a>
         </div>
 
-        <!-- 8 Enterprise -->
         <div class="pricing-card">
           <h3>Enterprise</h3>
           <div class="pricing-price">fra 129 990 kr</div>
@@ -406,30 +275,82 @@
             <li><span class="ck">&#10003;</span> Ubegrenset moduler</li>
             <li><span class="ck">&#10003;</span> Dedikert prosjektleder</li>
             <li><span class="ck">&#10003;</span> SLA og oppetidsgaranti</li>
-            <li><span class="ck">&#10003;</span> Sikkerhetsgjennomgang</li>
           </ul>
           <div class="pricing-support">12 mnd gratis support inkludert</div>
           <div class="pricing-examples"><div class="pricing-examples-label">Eksempler</div><div class="pricing-examples-list"><span>Enterprise-plattform</span><span>Multi-tenant SaaS</span><span>Komplett digitalisering</span></div></div>
-          <button class="btn btn-secondary btn-block booking-toggle">Bestill mote</button>
-          <div class="booking-dropdown">
-            <h4>Book gratis mote - Enterprise</h4>
-            <form action="https://formsubmit.co/kontakt@digitaleverk.no" method="POST">
-              <input type="hidden" name="_subject" value="Ny booking: Enterprise-pakken">
-              <input type="hidden" name="_captcha" value="false">
-              <input type="hidden" name="_template" value="table">
-              <input type="hidden" name="pakke" value="Enterprise (fra 129 990 kr)">
-              <input type="hidden" name="dato" value="">
-              <input type="hidden" name="tidspunkt" value="">
-              <div class="form-group"><label>Navn *</label><input type="text" name="navn" required placeholder="Ditt navn"></div>
-              <div class="form-group"><label>E-post *</label><input type="email" name="epost" required placeholder="din@epost.no"></div>
-              <div class="form-group"><label>Telefon *</label><input type="tel" name="telefon" required placeholder="+47 000 00 000"></div>
-              <div class="form-group"><label>Tema/kommentar <span class="opt">(valgfritt)</span></label><textarea name="kommentar" placeholder="Hva onsker du a snakke om?"></textarea></div>
-              <div class="form-group"><label>Velg dato og tid</label><div class="cal-area"></div></div>
-              <button type="submit" class="btn btn-primary btn-block">Send booking</button>
-            </form>
-          </div>
+          <a href="#booking" class="btn btn-secondary btn-block" data-package="Enterprise (fra 129 990 kr)">Book mote</a>
         </div>
 
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK MOTE - Dedicated section with form + calendar -->
+<section id="booking" class="section booking">
+  <div class="container">
+    <div class="booking-grid">
+      <div class="booking-info fade-in">
+        <div class="section-label">Gratis mote</div>
+        <h2 class="section-title">Book et gratis mote</h2>
+        <p style="font-size:17px;color:#aaa;line-height:1.7;margin-bottom:32px">Fyll ut skjemaet, velg en ledig tid i kalenderen, og trykk send. Du mottar en bekreftelse pa e-post.</p>
+        <div class="booking-usps">
+          <div class="usp-item">
+            <div class="usp-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c9b07a" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+            <div><h4>Helt gratis og uforpliktende</h4><p>Ingen skjulte kostnader.</p></div>
+          </div>
+          <div class="usp-item">
+            <div class="usp-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c9b07a" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <div><h4>30-60 min brainstorming</h4><p>Vi bruker tid pa a forsta dine behov.</p></div>
+          </div>
+          <div class="usp-item">
+            <div class="usp-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c9b07a" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+            <div><h4>Konkret forslag etter motet</h4><p>Du far et tydelig forslag med estimat.</p></div>
+          </div>
+          <div class="usp-item">
+            <div class="usp-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c9b07a" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <div><h4>Ingen bindingstid</h4><p>Du bestemmer selv om du gar videre.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="booking-form-card fade-in">
+        <h3>Send booking</h3>
+        <form id="booking-form" action="https://formsubmit.co/kontakt@digitaleverk.no" method="POST">
+          <input type="hidden" name="_subject" value="Ny booking fra digitaleverk.no">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="dato" value="" id="hidden-dato">
+          <input type="hidden" name="tidspunkt" value="" id="hidden-tid">
+
+          <div class="form-group">
+            <label for="f-pakke">Velg pakke</label>
+            <select name="pakke" id="f-pakke">
+              <option value="">-- Velg pakke --</option>
+              <option value="Visittkort (4 990 kr)">Visittkort - 4 990 kr</option>
+              <option value="Starter (9 990 kr)">Starter - 9 990 kr</option>
+              <option value="Bedrift (19 990 kr)">Bedrift - 19 990 kr</option>
+              <option value="Booking (29 990 kr)">Booking - 29 990 kr</option>
+              <option value="Dashboard (39 990 kr)">Dashboard - 39 990 kr</option>
+              <option value="Kursplattform (49 990 kr)">Kursplattform - 49 990 kr</option>
+              <option value="Premium (79 990 kr)">Premium - 79 990 kr</option>
+              <option value="Enterprise (fra 129 990 kr)">Enterprise - fra 129 990 kr</option>
+              <option value="Vet ikke enda">Vet ikke enda</option>
+            </select>
+          </div>
+          <div class="form-group"><label for="f-navn">Navn *</label><input type="text" id="f-navn" name="navn" required placeholder="Ditt fulle navn"></div>
+          <div class="form-group"><label for="f-epost">E-post *</label><input type="email" id="f-epost" name="epost" required placeholder="din@epost.no"></div>
+          <div class="form-group"><label for="f-tlf">Telefon *</label><input type="tel" id="f-tlf" name="telefon" required placeholder="+47 000 00 000"></div>
+          <div class="form-group"><label for="f-tema">Tema / hva onsker du a snakke om? <span class="opt">(valgfritt)</span></label><textarea id="f-tema" name="kommentar" placeholder="Fortell oss litt om ditt prosjekt eller behov..."></textarea></div>
+
+          <div class="form-group">
+            <label>Velg dato og tidspunkt</label>
+            <div id="booking-calendar"></div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">Send booking</button>
+          <div id="booking-msg"></div>
+        </form>
       </div>
     </div>
   </div>
@@ -441,19 +362,14 @@
     <div class="fade-in">
       <div class="section-label">Support-abonnement</div>
       <h2 class="section-title">Lopende support og vedlikehold</h2>
-      <p class="section-sub">Etter at prosjektet er levert kan du tegne en support-avtale. Jo lengre periode, jo lavere manedspris.</p>
+      <p class="section-sub">Etter levert prosjekt kan du tegne support-avtale. Jo lengre periode, jo lavere manedspris.</p>
     </div>
     <div class="support-grid">
       <div class="support-card fade-in">
         <div class="support-dur">1 maned</div>
         <div class="support-price">4 990 <span class="support-unit">kr/mnd</span></div>
         <div class="support-total">Totalt: 4 990 kr</div>
-        <ul class="support-feats">
-          <li><span class="ck">&#10003;</span> Feilretting og bugfiks</li>
-          <li><span class="ck">&#10003;</span> Sma oppdateringer</li>
-          <li><span class="ck">&#10003;</span> E-post-support</li>
-          <li><span class="ck">&#10003;</span> Responstid: 48 timer</li>
-        </ul>
+        <ul class="support-feats"><li><span class="ck">&#10003;</span> Feilretting og bugfiks</li><li><span class="ck">&#10003;</span> Sma oppdateringer</li><li><span class="ck">&#10003;</span> E-post-support</li><li><span class="ck">&#10003;</span> Responstid: 48 timer</li></ul>
         <button class="btn btn-secondary btn-sm btn-block" data-support="1 maned - 4 990 kr/mnd">Tegn avtale</button>
       </div>
       <div class="support-card fade-in">
@@ -461,12 +377,7 @@
         <div class="support-price">3 990 <span class="support-unit">kr/mnd</span></div>
         <div class="support-total">Totalt: 11 970 kr</div>
         <div class="support-save">Spar 3 000 kr</div>
-        <ul class="support-feats">
-          <li><span class="ck">&#10003;</span> Alt i 1 maned</li>
-          <li><span class="ck">&#10003;</span> Prioritert support</li>
-          <li><span class="ck">&#10003;</span> Innholdsoppdateringer</li>
-          <li><span class="ck">&#10003;</span> Responstid: 24 timer</li>
-        </ul>
+        <ul class="support-feats"><li><span class="ck">&#10003;</span> Alt i 1 maned</li><li><span class="ck">&#10003;</span> Prioritert support</li><li><span class="ck">&#10003;</span> Innholdsoppdateringer</li><li><span class="ck">&#10003;</span> Responstid: 24 timer</li></ul>
         <button class="btn btn-secondary btn-sm btn-block" data-support="3 maneder - 3 990 kr/mnd">Tegn avtale</button>
       </div>
       <div class="support-card best fade-in">
@@ -475,12 +386,7 @@
         <div class="support-price">2 990 <span class="support-unit">kr/mnd</span></div>
         <div class="support-total">Totalt: 17 940 kr</div>
         <div class="support-save">Spar 12 000 kr</div>
-        <ul class="support-feats">
-          <li><span class="ck">&#10003;</span> Alt i 3 maneder</li>
-          <li><span class="ck">&#10003;</span> Ytelsesoptimalisering</li>
-          <li><span class="ck">&#10003;</span> Manedlig statusrapport</li>
-          <li><span class="ck">&#10003;</span> Responstid: 12 timer</li>
-        </ul>
+        <ul class="support-feats"><li><span class="ck">&#10003;</span> Alt i 3 maneder</li><li><span class="ck">&#10003;</span> Ytelsesoptimalisering</li><li><span class="ck">&#10003;</span> Manedlig statusrapport</li><li><span class="ck">&#10003;</span> Responstid: 12 timer</li></ul>
         <button class="btn btn-primary btn-sm btn-block" data-support="6 maneder - 2 990 kr/mnd">Tegn avtale</button>
       </div>
       <div class="support-card fade-in">
@@ -488,13 +394,7 @@
         <div class="support-price">1 990 <span class="support-unit">kr/mnd</span></div>
         <div class="support-total">Totalt: 23 880 kr</div>
         <div class="support-save">Spar 36 000 kr</div>
-        <ul class="support-feats">
-          <li><span class="ck">&#10003;</span> Alt i 6 maneder</li>
-          <li><span class="ck">&#10003;</span> Sikkerhetsoppdateringer</li>
-          <li><span class="ck">&#10003;</span> Kvartalsvise strategimater</li>
-          <li><span class="ck">&#10003;</span> Responstid: 4 timer</li>
-          <li><span class="ck">&#10003;</span> Dedikert kontaktperson</li>
-        </ul>
+        <ul class="support-feats"><li><span class="ck">&#10003;</span> Alt i 6 maneder</li><li><span class="ck">&#10003;</span> Sikkerhetsoppdateringer</li><li><span class="ck">&#10003;</span> Kvartalsvise strategimater</li><li><span class="ck">&#10003;</span> Responstid: 4 timer</li><li><span class="ck">&#10003;</span> Dedikert kontaktperson</li></ul>
         <button class="btn btn-secondary btn-sm btn-block" data-support="12 maneder - 1 990 kr/mnd">Tegn avtale</button>
       </div>
     </div>
@@ -506,7 +406,7 @@
   <div class="support-form-box">
     <button class="support-close" aria-label="Lukk">&times;</button>
     <h3>Tegn support-avtale</h3>
-    <p class="sub">Fyll ut skjemaet sa tar vi kontakt for a sette opp avtalen.</p>
+    <p class="sub">Fyll ut sa tar vi kontakt for a sette opp avtalen.</p>
     <form action="https://formsubmit.co/kontakt@digitaleverk.no" method="POST">
       <input type="hidden" name="_subject" value="Ny support-avtale henvendelse">
       <input type="hidden" name="_captcha" value="false">
@@ -516,7 +416,7 @@
       <div class="form-group"><label>Bedrift *</label><input type="text" name="bedrift" required placeholder="Bedriftsnavn"></div>
       <div class="form-group"><label>E-post *</label><input type="email" name="epost" required placeholder="din@epost.no"></div>
       <div class="form-group"><label>Telefon</label><input type="tel" name="telefon" placeholder="+47 000 00 000"></div>
-      <div class="form-group"><label>Kommentar <span class="opt">(valgfritt)</span></label><textarea name="kommentar" placeholder="Eventuelle sporsmaal eller opp til deg..."></textarea></div>
+      <div class="form-group"><label>Kommentar <span class="opt">(valgfritt)</span></label><textarea name="kommentar" placeholder="Eventuelle sporsmaal..."></textarea></div>
       <button type="submit" class="btn btn-primary btn-block" style="margin-top:6px">Send henvendelse</button>
     </form>
   </div>
@@ -533,11 +433,10 @@
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         kontakt@digitaleverk.no
       </a>
-      <p class="contact-note">Vil du booke et mote? <a href="#priser">Velg en pakke over</a> og trykk &laquo;Bestill mote&raquo;.</p>
+      <p class="contact-note">Vil du booke et mote? <a href="#booking">Ga til booking-seksjonen</a>.</p>
     </div>
   </div>
 </section>
-
 </main>
 
 <!-- FOOTER -->
@@ -549,17 +448,16 @@
         <p>Digitale losninger for moderne bedrifter.</p>
       </div>
       <nav class="footer-nav" aria-label="Bunnnavigasjon">
-        <a href="#tjenester">Tjenester</a><a href="#portefolje">Portefolje</a><a href="#priser">Priser</a><a href="#support">Support</a><a href="#kontakt">Kontakt</a>
+        <a href="#tjenester">Tjenester</a><a href="#portefolje">Portefolje</a><a href="#priser">Priser</a><a href="#booking">Book mote</a><a href="#support">Support</a><a href="#kontakt">Kontakt</a>
       </nav>
       <div class="footer-right">
-        <a href="#priser" class="btn btn-primary btn-sm">Se pakker</a>
+        <a href="#booking" class="btn btn-primary btn-sm">Book gratis mote</a>
         <div class="footer-email">kontakt@digitaleverk.no</div>
       </div>
     </div>
     <div class="footer-bottom"><div>&copy; 2026 Digitale Verk</div><div>digitaleverk.no</div></div>
   </div>
 </footer>
-
 <script src="scripts/main.js"></script>
 </body>
 </html>
