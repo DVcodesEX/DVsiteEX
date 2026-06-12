@@ -3,54 +3,110 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Digitale Verk</title>
-  <link rel="icon" type="image/png" href="logo.PNG" />
-  <link rel="stylesheet" href="style.css" />
+
+  <title>Digitale Verk | Digitale løsninger for små bedrifter</title>
+  <meta name="description" content="Digitale Verk lager enkle nettsider, digitale skjemaer og små systemer for små bedrifter." />
+
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="stylesheet" href="styles/main.css" />
 </head>
 <body>
 
-  <main class="coming-soon">
-    <img src="logo.PNG" alt="Digitale Verk logo" class="logo" />
+  <header class="site-header">
+    <a href="index.html" class="brand">
+      <img src="logo.png" alt="Digitale Verk logo" />
+      <span>Digitale Verk</span>
+    </a>
 
-    <p class="tag">Lanseres snart</p>
+    <nav class="menu">
+      <a href="#hjem">Hjem</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+  </header>
 
-    <h1>Digitale løsninger for små bedrifter.</h1>
+  <main id="hjem">
 
-    <p class="intro">
-      Vi lager enkle nettsider, digitale skjemaer og små systemer
-      som hjelper bedrifter med bedre oversikt og mindre manuelt arbeid.
-    </p>
+    <section class="hero">
+      <div class="hero-content">
+        <p class="eyebrow">Lanseres snart</p>
 
-    <section class="services">
-      <div class="service">
-        <span>🌐</span>
-        <p>Nettsider</p>
-      </div>
+        <img src="logo.png" alt="Digitale Verk logo" class="hero-logo" />
 
-      <div class="service">
-        <span>📋</span>
-        <p>Digitale skjemaer</p>
-      </div>
+        <h1>Digitale løsninger for små bedrifter.</h1>
 
-      <div class="service">
-        <span>⚙️</span>
-        <p>Interne systemer</p>
-      </div>
+        <p class="lead">
+          Vi lager enkle nettsider, digitale skjemaer og små systemer
+          som hjelper bedrifter med bedre oversikt og mindre manuelt arbeid.
+        </p>
 
-      <div class="service">
-        <span>🔄</span>
-        <p>Automatisering</p>
+        <p class="under-development">
+          Nettsiden vår er fortsatt under utvikling. Mer informasjon kommer snart.
+        </p>
+
+        <a href="#kontakt" class="button">Kontakt oss</a>
       </div>
     </section>
 
-    <p class="under-dev">
-      Nettsiden vår er fortsatt under utvikling. Mer informasjon kommer snart.
-    </p>
+    <section class="about">
+      <p class="section-label">Hva vi kan hjelpe med</p>
 
-    <a href="mailto:kontakt@digitaleverk.no" class="mail">
-      kontakt@digitaleverk.no
-    </a>
+      <div class="cards">
+        <article class="card">
+          <span>🌐</span>
+          <h2>Nettsider</h2>
+          <p>Enkle og ryddige nettsider som gir bedriften et profesjonelt førsteinntrykk.</p>
+        </article>
+
+        <article class="card">
+          <span>📋</span>
+          <h2>Digitale skjemaer</h2>
+          <p>Skjemaer for forespørsler, påmelding, bestilling eller intern registrering.</p>
+        </article>
+
+        <article class="card">
+          <span>⚙️</span>
+          <h2>Interne systemer</h2>
+          <p>Små verktøy som samler oppgaver, kunder, filer eller oversikt på ett sted.</p>
+        </article>
+
+        <article class="card">
+          <span>🔄</span>
+          <h2>Automatisering</h2>
+          <p>Enkle løsninger som reduserer manuelt arbeid og gjør hverdagen mer effektiv.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="kontakt" class="contact">
+      <p class="section-label">Kontakt</p>
+      <h2>Har du en idé eller et behov?</h2>
+
+      <p>
+        Send en kort melding, så tar vi kontakt.
+      </p>
+
+      <form action="https://formsubmit.co/kontakt@digitaleverk.no" method="POST" class="contact-form">
+        <input type="hidden" name="_subject" value="Ny henvendelse fra digitaleverk.no" />
+        <input type="hidden" name="_next" value="https://digitaleverk.no/takk.html" />
+        <input type="hidden" name="_template" value="table" />
+
+        <input type="text" name="navn" placeholder="Navn" required />
+        <input type="email" name="epost" placeholder="E-post" required />
+        <textarea name="melding" placeholder="Hva kan vi hjelpe deg med?" required></textarea>
+
+        <button type="submit">Send melding</button>
+      </form>
+
+      <a href="mailto:kontakt@digitaleverk.no" class="email-link">
+        kontakt@digitaleverk.no
+      </a>
+    </section>
+
   </main>
+
+  <footer class="footer">
+    <p>© 2026 Digitale Verk</p>
+  </footer>
 
 </body>
 </html>
