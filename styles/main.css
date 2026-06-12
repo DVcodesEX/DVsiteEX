@@ -141,3 +141,120 @@
     grid-template-columns:1fr;
   }
 }
+
+
+.vacation-ui,
+.requests-ui{
+  display:grid;
+  gap:12px;
+}
+
+.vacation-head,
+.request-toolbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 15px;
+  border-radius:16px;
+  background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  color:white;
+}
+
+.vacation-head span,
+.request-toolbar span{
+  opacity:.9;
+  font-size:13px;
+  font-weight:800;
+}
+
+.vacation-week,
+.vacation-calendar{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:8px;
+}
+
+.vacation-week span{
+  color:var(--muted);
+  font-size:12px;
+  font-weight:900;
+}
+
+.vacation-calendar div{
+  min-height:46px;
+  border-radius:12px;
+  background:#f8fafc;
+  border:1px solid var(--line);
+}
+
+.vacation-calendar .vacation{
+  padding:8px;
+  font-size:11px;
+  font-weight:900;
+  line-height:1.25;
+}
+
+.vacation.approved{
+  background:#ecfdf3;
+  color:#047857;
+}
+
+.vacation.pending{
+  background:#fff7ed;
+  color:#c2410c;
+}
+
+.vacation-summary{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.vacation-summary span{
+  padding:8px 10px;
+  border-radius:999px;
+  background:#f8fafc;
+  border:1px solid var(--line);
+  color:var(--muted);
+  font-size:13px;
+  font-weight:800;
+}
+
+.request-card{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:14px;
+  padding:15px;
+  border-radius:16px;
+  background:#f8fafc;
+  border:1px solid var(--line);
+}
+
+.request-card p{
+  color:var(--muted);
+  font-size:13px;
+  margin-top:2px;
+}
+
+.request-card > span{
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:900;
+}
+
+.request-card.new > span{
+  background:#eef2ff;
+  color:var(--accent);
+}
+
+.request-card.progress > span{
+  background:#fff7ed;
+  color:#c2410c;
+}
+
+.request-card.done > span{
+  background:#ecfdf3;
+  color:#047857;
+}
