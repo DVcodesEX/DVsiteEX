@@ -1100,3 +1100,24 @@ textarea:focus{
     font-size: 26px;
   }
 }
+
+
+.pc-form {
+  margin-bottom: 20px;
+}
+
+.pc-form.big {
+  margin-bottom: 0;
+}
+
+.demo-actions button {
+  border: 0;
+  padding: 13px 18px;
+  border-radius: 14px;
+  background: #2563eb;
+  color: white;
+  font-weight: 800;
+  cursor: pointer;
+  margin-right: 10px;
+  box-shadow: 0 12px 28px rgba(37,99,235,.25);
+}
