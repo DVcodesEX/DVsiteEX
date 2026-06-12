@@ -1,191 +1,61 @@
-/* Digitale Verk - Main JS */
+/* Digitale Verk - enkel main.js */
 
 document.addEventListener('DOMContentLoaded', function () {
-  initHeader();
-  initMobileMenu();
-  initFadeIn();
-  initActiveNav();
-  initShowcaseSlider();
+  initHeaderScroll();
+  initSmoothLinks();
   initFormReplyTo();
 });
 
-
-/* Header scroll */
-function initHeader() {
-  var header = document.querySelector('header');
+function initHeaderScroll() {
+  var header = document.querySelector('.site-header');
   if (!header) return;
 
-  function check() {
-    header.classList.toggle('scrolled', window.scrollY > 40);
+  function checkScroll() {
+    header.classList.toggle('scrolled', window.scrollY > 20);
   }
 
-  window.addEventListener('scroll', check, { passive: true });
-  check();
+  window.addEventListener('scroll', checkScroll, { passive: true });
+  checkScroll();
 }
 
-/* Mobile menu */
-function initMobileMenu() {
-  var btn = document.querySelector('.hamburger');
-  var menu = document.querySelector('.mobile-menu');
-  var overlay = document.querySelector('.mobile-overlay');
+function initSmoothLinks() {
+  var links = document.querySelectorAll('a[href^="#"]');
 
-  if (!btn || !menu || !overlay) return;
+  links.forEach(function (link) {
+    link.addEventListener('click', function (event) {
+      var targetId = link.getAttribute('href');
+      if (!targetId || targetId === '#') return;
 
-  function openMenu() {
-    btn.classList.add('open');
-    menu.classList.add('open');
-    overlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
+      var target = document.querySelector(targetId);
+      if (!target) return;
 
-  function closeMenu() {
-    btn.classList.remove('open');
-    menu.classList.remove('open');
-    overlay.classList.remove('open');
-    document.body.style.overflow = '';
-  }
+      event.preventDefault();
 
-  function toggleMenu() {
-    if (menu.classList.contains('open')) {
-      closeMenu();
-    } else {
-      openMenu();
-    }
-  }
-
-  btn.addEventListener('click', toggleMenu);
-  overlay.addEventListener('click', closeMenu);
-
-  menu.querySelectorAll('a').forEach(function (link) {
-    link.addEventListener('click', closeMenu);
-  });
-}
-
-/* Fade in on scroll */
-function initFadeIn() {
-  var elements = document.querySelectorAll('.fade-in');
-  if (!elements.length) return;
-
-  var observer = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.12,
-    rootMargin: '0px 0px -40px 0px'
-  });
-
-  elements.forEach(function (el) {
-    observer.observe(el);
-  });
-}
-
-/* Active nav link on scroll */
-function initActiveNav() {
-  var sections = document.querySelectorAll('section[id]');
-  var links = document.querySelectorAll('.nav-links a, .mobile-menu a');
-
-  if (!sections.length || !links.length) return;
-
-  var observer = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (!entry.isIntersecting) return;
-
-      var id = entry.target.getAttribute('id');
-
-      links.forEach(function (link) {
-        var href = link.getAttribute('href');
-        link.classList.toggle('active', href === '#' + id);
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
       });
     });
-  }, {
-    threshold: 0.35,
-    rootMargin: '-100px 0px -45% 0px'
-  });
-
-  sections.forEach(function (section) {
-    observer.observe(section);
   });
 }
 
-/* Showcase slider */
-function initShowcaseSlider() {
-  var box = document.querySelector('.showcase-box');
-  if (!box) return;
+function initFormReplyTo() {
+  var form = document.querySelector('.contact-form');
+  if (!form) return;
 
-  var slides = box.querySelectorAll('.showcase-slide');
-  var tabs = box.querySelectorAll('.showcase-tab');
-  var prev = box.querySelector('.showcase-arrow.prev');
-  var next = box.querySelector('.showcase-arrow.next');
-  var counter = box.querySelector('.showcase-counter');
-  var titleEl = box.querySelector('.showcase-title');
-  var textEl = box.querySelector('.showcase-text');
+  var emailInput = form.querySelector('input[name="epost"]');
+  if (!emailInput) return;
 
-  var titles = [
-    'Feriesystem for bedre oversikt i bedriften',
-    'Ansattoversikt med saldo og planlagt ferie',
-    'Ferieplan som gjør bemanning enklere',
-    'Ferieforespørsler med godkjenning og status',
-    'Innstillinger og administrasjon for ledelse',
-    'Min side for ansatte'
-  ];
+  form.addEventListener('submit', function () {
+    var existing = form.querySelector('input[name="_replyto"]');
 
-  var texts = [
-    'Et enkelt og ryddig system der ledelse og ansatte får oversikt over ferie, forespørsler, saldo og planlegging. Løsningen gjør det lettere å redusere manuelt arbeid og få bedre kontroll på bemanning.',
-    'Se ansatte, avdelinger, feriedager igjen og planlagt ferie i én tydelig visning. Perfekt for ledere som trenger rask oversikt.',
-    'Kalenderbasert visning som gjør det lettere å planlegge ferie, oppdage konflikter tidlig og sikre god bemanning.',
-    'Håndter ferieønsker, godkjenninger og endringer på en ryddig måte uten manuell oppfølging i e-post og Excel.',
-    'Administrer regler, roller, brukere og systemoppsett i et tydelig adminpanel tilpasset bedriftens behov.',
-    'Gi ansatte en egen side der de kan se feriedager, status på forespørsler og kommende fravær uten å måtte spørre leder.'
-  ];
-
-  var index = 0;
-
-  function render(i) {
-    slides.forEach(function (slide, idx) {
-      slide.classList.toggle('active', idx === i);
-    });
-
-    tabs.forEach(function (tab, idx) {
-      tab.classList.toggle('active', idx === i);
-    });
-
-    if (counter) counter.textContent = (i + 1) + ' / ' + slides.length;
-    if (titleEl) titleEl.textContent = titles[i];
-    if (textEl) textEl.textContent = texts[i];
-  }
-
-  if (prev) {
-    function goPrev(e) {
-      if (e) e.preventDefault();
-      index = (index - 1 + slides.length) % slides.length;
-      render(index);
+    if (!existing) {
+      existing = document.createElement('input');
+      existing.type = 'hidden';
+      existing.name = '_replyto';
+      form.appendChild(existing);
     }
 
-    prev.addEventListener('click', goPrev);
-    prev.addEventListener('touchstart', goPrev, { passive: false });
-  }
-
-  if (next) {
-    function goNext(e) {
-      if (e) e.preventDefault();
-      index = (index + 1) % slides.length;
-      render(index);
-    }
-
-    next.addEventListener('click', goNext);
-    next.addEventListener('touchstart', goNext, { passive: false });
-  }
-
-  tabs.forEach(function (tab, idx) {
-    tab.addEventListener('click', function () {
-      index = idx;
-      render(index);
-    });
+    existing.value = emailInput.value;
   });
-
-  render(index);
 }
