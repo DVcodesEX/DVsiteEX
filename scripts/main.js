@@ -12,14 +12,39 @@ function initSystemSlider() {
 
   const slides = [
     {
-      title: "Ferieoversikt",
-      text: "Ferieønsker, godkjenning og fravær samlet på ett sted.",
-      html: `
-        <div class="status-row"><span>Godkjent</span><strong>8</strong></div>
-        <div class="status-row"><span>Venter</span><strong>3</strong></div>
-        <div class="status-row"><span>Avslått</span><strong>1</strong></div>
-      `
-    },
+  title: "Ferieoversikt",
+  text: "Planlegg ferie, fravær og godkjenninger i én samlet kalender.",
+  html: `
+    <div class="vacation-ui">
+      <div class="vacation-head">
+        <strong>Juli 2026</strong>
+        <span>Ferieplan</span>
+      </div>
+
+      <div class="vacation-week">
+        <span>Man</span><span>Tir</span><span>Ons</span><span>Tor</span><span>Fre</span>
+      </div>
+
+      <div class="vacation-calendar">
+        <div></div>
+        <div class="vacation approved">Emilie<br>Ferie</div>
+        <div class="vacation approved">Jonas<br>Ferie</div>
+        <div></div>
+        <div class="vacation pending">Martin<br>Venter</div>
+        <div class="vacation approved">Sara<br>Ferie</div>
+        <div></div>
+        <div></div>
+        <div class="vacation pending">Ali<br>Venter</div>
+        <div></div>
+      </div>
+
+      <div class="vacation-summary">
+        <span>Godkjent: 8</span>
+        <span>Venter: 3</span>
+      </div>
+    </div>
+  `
+},
     {
       title: "Bookingsystem",
       text: "Kalender med avtaler, tidspunkt og kunder.",
@@ -58,14 +83,41 @@ function initSystemSlider() {
       `
     },
     {
-      title: "Forespørsler",
-      text: "Kundehenvendelser med status, ansvar og oppfølging.",
-      html: `
-        <div class="ticket"><b>Ny forespørsel</b><span>Venter</span></div>
-        <div class="ticket"><b>Tilbud sendt</b><span>Pågår</span></div>
-        <div class="ticket"><b>Ferdig sak</b><span>Lukket</span></div>
-      `
-    },
+  title: "Forespørsler",
+  text: "Samle henvendelser, status og oppfølging på ett sted.",
+  html: `
+    <div class="requests-ui">
+      <div class="request-toolbar">
+        <strong>Kundeforespørsler</strong>
+        <span>3 nye</span>
+      </div>
+
+      <div class="request-card new">
+        <div>
+          <strong>Ny nettside</strong>
+          <p>Fra: Nordvik Service</p>
+        </div>
+        <span>Ny</span>
+      </div>
+
+      <div class="request-card progress">
+        <div>
+          <strong>Bookingløsning</strong>
+          <p>Fra: Klinikk Sentrum</p>
+        </div>
+        <span>Pågår</span>
+      </div>
+
+      <div class="request-card done">
+        <div>
+          <strong>Fakturaoversikt</strong>
+          <p>Fra: Bygg & Drift AS</p>
+        </div>
+        <span>Ferdig</span>
+      </div>
+    </div>
+  `
+},
     {
       title: "Ansattportal",
       text: "Egne sider for ansatte, oppgaver, dokumenter og opplæring.",
