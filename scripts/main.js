@@ -1,65 +1,3 @@
-/* Digitale Verk - enkel main.js */
-
-document.addEventListener('DOMContentLoaded', function () {
-  initHeaderScroll();
-  initSmoothLinks();
-  initFormReplyTo();
-});
-
-function initHeaderScroll() {
-  var header = document.querySelector('.site-header');
-  if (!header) return;
-
-  function checkScroll() {
-    header.classList.toggle('scrolled', window.scrollY > 20);
-  }
-
-  window.addEventListener('scroll', checkScroll, { passive: true });
-  checkScroll();
-}
-
-function initSmoothLinks() {
-  var links = document.querySelectorAll('a[href^="#"]');
-
-  links.forEach(function (link) {
-    link.addEventListener('click', function (event) {
-      var targetId = link.getAttribute('href');
-      if (!targetId || targetId === '#') return;
-
-      var target = document.querySelector(targetId);
-      if (!target) return;
-
-      event.preventDefault();
-
-      target.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    });
-  });
-}
-
-function initFormReplyTo() {
-  var form = document.querySelector('.contact-form');
-  if (!form) return;
-
-  var emailInput = form.querySelector('input[name="epost"]');
-  if (!emailInput) return;
-
-  form.addEventListener('submit', function () {
-    var existing = form.querySelector('input[name="_replyto"]');
-
-    if (!existing) {
-      existing = document.createElement('input');
-      existing.type = 'hidden';
-      existing.name = '_replyto';
-      form.appendChild(existing);
-    }
-
-    existing.value = emailInput.value;
-  });
-}
-
 document.addEventListener("DOMContentLoaded", function () {
   initSystemSlider();
 });
@@ -75,33 +13,74 @@ function initSystemSlider() {
   const slides = [
     {
       title: "Ferieoversikt",
-      text: "Oversikt over ferieønsker, status og godkjenning.",
-      items: [["Godkjent", "8"], ["Venter", "3"], ["Avslått", "1"]]
+      text: "Ferieønsker, godkjenning og fravær samlet på ett sted.",
+      html: `
+        <div class="status-row"><span>Godkjent</span><strong>8</strong></div>
+        <div class="status-row"><span>Venter</span><strong>3</strong></div>
+        <div class="status-row"><span>Avslått</span><strong>1</strong></div>
+      `
     },
     {
       title: "Bookingsystem",
-      text: "Hold oversikt over avtaler, tidspunkt og kunder.",
-      items: [["I dag", "5"], ["Denne uken", "18"], ["Ledige tider", "7"]]
+      text: "Kalender med avtaler, tidspunkt og kunder.",
+      html: `
+        <div class="calendar-mini">
+          <div class="calendar-head"><strong>Uke 24</strong><span>Juni</span></div>
+          <div class="calendar-days">
+            <span>Man</span><span>Tir</span><span>Ons</span><span>Tor</span><span>Fre</span>
+          </div>
+          <div class="calendar-slots">
+            <div></div><div class="booking">09:00<br>Kunde A</div><div></div><div class="booking">12:30<br>Befaring</div><div></div>
+            <div class="booking">14:00<br>Service</div><div></div><div class="booking">15:15<br>Møte</div><div></div><div class="booking">10:00<br>Ny avtale</div>
+          </div>
+        </div>
+      `
     },
     {
-      title: "Fakturaoversikt",
-      text: "Se utkast, sendte fakturaer og betalinger.",
-      items: [["Sendt", "12"], ["Utkast", "4"], ["Betalt", "9"]]
+      title: "Fakturasystem",
+      text: "Lag fakturaer og hold oversikt over status.",
+      html: `
+        <div class="invoice-ui">
+          <button type="button">+ Ny faktura</button>
+          <div class="invoice-line"><span>#1042 · Kunde AS</span><strong>Sendt</strong></div>
+          <div class="invoice-line"><span>#1043 · Nordbygg</span><strong>Utkast</strong></div>
+          <div class="invoice-summary"><span>Betalt denne måneden</span><strong>38 400 kr</strong></div>
+        </div>
+      `
+    },
+    {
+      title: "Stemplingssystem",
+      text: "Registrering av arbeidstid, pauser og vakter.",
+      html: `
+        <div class="stamp-card"><span>Inn i dag</span><strong class="stamp-time">07:58</strong></div>
+        <div class="stamp-card"><span>Pause</span><strong>30 min</strong></div>
+        <div class="stamp-card"><span>Timer denne uken</span><strong>32,5</strong></div>
+      `
     },
     {
       title: "Forespørsler",
-      text: "Samle kundehenvendelser og følg status.",
-      items: [["Nye", "6"], ["Pågår", "4"], ["Ferdig", "11"]]
-    },
-    {
-      title: "Oppgavestyring",
-      text: "Fordel oppgaver, ansvar og frister internt.",
-      items: [["Åpne", "14"], ["Haster", "2"], ["Fullført", "23"]]
+      text: "Kundehenvendelser med status, ansvar og oppfølging.",
+      html: `
+        <div class="ticket"><b>Ny forespørsel</b><span>Venter</span></div>
+        <div class="ticket"><b>Tilbud sendt</b><span>Pågår</span></div>
+        <div class="ticket"><b>Ferdig sak</b><span>Lukket</span></div>
+      `
     },
     {
       title: "Ansattportal",
-      text: "Gi ansatte tilgang til informasjon og egne saker.",
-      items: [["Ansatte", "24"], ["Dokumenter", "38"], ["Varsler", "5"]]
+      text: "Egne sider for ansatte, oppgaver, dokumenter og opplæring.",
+      html: `
+        <div class="portal-header">
+          <div><strong>Hei, Martin</strong><span>Din oversikt i dag</span></div>
+          <small>Ansatt</small>
+        </div>
+        <div class="portal-grid">
+          <div>Mine oppgaver <strong>4</strong></div>
+          <div>E-læring <strong>2</strong></div>
+          <div>Dokumenter <strong>12</strong></div>
+          <div>Fravær <strong>1</strong></div>
+        </div>
+      `
     }
   ];
 
@@ -112,20 +91,14 @@ function initSystemSlider() {
 
     title.textContent = slide.title;
     text.textContent = slide.text;
+    preview.innerHTML = slide.html;
 
-    preview.innerHTML = slide.items.map(item => `
-      <div class="system-row">
-        <span>${item[0]}</span>
-        <strong>${item[1]}</strong>
-      </div>
-    `).join("");
-
-    dots.innerHTML = slides.map((_, i) => `
-      <button class="${i === index ? "active" : ""}" aria-label="Vis eksempel ${i + 1}"></button>
-    `).join("");
+    dots.innerHTML = slides.map((_, i) =>
+      `<button class="${i === index ? "active" : ""}" aria-label="Vis eksempel ${i + 1}"></button>`
+    ).join("");
 
     dots.querySelectorAll("button").forEach((button, i) => {
-      button.addEventListener("click", () => {
+      button.addEventListener("click", function () {
         index = i;
         render();
       });
@@ -134,8 +107,8 @@ function initSystemSlider() {
 
   render();
 
-  setInterval(() => {
+  setInterval(function () {
     index = (index + 1) % slides.length;
     render();
-  }, 3500);
+  }, 2400);
 }
