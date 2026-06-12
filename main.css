@@ -820,3 +820,283 @@ textarea:focus{
     min-height:auto;
   }
 }
+
+
+
+
+
+
+.demo-shell {
+  max-width: 1150px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.pc-demo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pc-screen {
+  width: 100%;
+  max-width: 1050px;
+  min-height: 610px;
+  background: #0f172a;
+  border: 12px solid #111827;
+  border-radius: 28px;
+  box-shadow: 0 35px 90px rgba(0,0,0,.28);
+  overflow: hidden;
+}
+
+.pc-topbar {
+  height: 54px;
+  background: #020617;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 18px;
+  color: white;
+}
+
+.pc-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.pc-dots span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #64748b;
+}
+
+.pc-dots span:nth-child(1) { background: #fb7185; }
+.pc-dots span:nth-child(2) { background: #facc15; }
+.pc-dots span:nth-child(3) { background: #4ade80; }
+
+.pc-title {
+  font-weight: 700;
+  letter-spacing: .02em;
+}
+
+.pc-user {
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  padding: 8px 10px;
+  border-radius: 12px;
+  font-weight: 800;
+}
+
+.pc-body {
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  min-height: 556px;
+  background: #f8fafc;
+}
+
+.pc-sidebar {
+  background: #111827;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pc-logo {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: white;
+  color: #111827;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  margin-bottom: 18px;
+}
+
+.pc-sidebar button {
+  border: 0;
+  text-align: left;
+  padding: 13px 14px;
+  border-radius: 14px;
+  background: transparent;
+  color: #cbd5e1;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.pc-sidebar button:hover,
+.pc-sidebar button.active {
+  background: rgba(255,255,255,.1);
+  color: white;
+}
+
+.pc-app {
+  padding: 30px;
+}
+
+.pc-app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.pc-app-header h2 {
+  margin: 4px 0 0;
+  font-size: 32px;
+}
+
+.pc-app-header button {
+  border: 0;
+  padding: 13px 18px;
+  border-radius: 14px;
+  background: #2563eb;
+  color: white;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 12px 28px rgba(37,99,235,.25);
+}
+
+.pc-app-header button:hover {
+  transform: translateY(-2px);
+}
+
+.pc-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.pc-stats div {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 22px;
+  padding: 22px;
+  box-shadow: 0 12px 30px rgba(15,23,42,.07);
+}
+
+.pc-stats strong {
+  display: block;
+  font-size: 38px;
+  color: #0f172a;
+}
+
+.pc-stats span {
+  color: #64748b;
+  font-weight: 700;
+}
+
+.pc-window {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 18px 45px rgba(15,23,42,.08);
+}
+
+.pc-window-head {
+  display: flex;
+  justify-content: space-between;
+  padding: 18px 20px;
+  background: #f1f5f9;
+  font-weight: 800;
+}
+
+.pc-window-head b {
+  color: #2563eb;
+}
+
+.pc-list {
+  padding: 12px;
+}
+
+.pc-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 16px;
+  margin-bottom: 10px;
+  background: #f8fafc;
+  font-weight: 700;
+}
+
+.pc-row b {
+  background: #dbeafe;
+  color: #1d4ed8;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+}
+
+.pc-row.new {
+  animation: popIn .25s ease;
+  background: #eff6ff;
+}
+
+.pc-stand {
+  width: 120px;
+  height: 55px;
+  background: #111827;
+}
+
+.pc-foot {
+  width: 260px;
+  height: 24px;
+  background: #111827;
+  border-radius: 999px;
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 800px) {
+  .pc-screen {
+    border-width: 7px;
+    border-radius: 22px;
+    min-height: auto;
+  }
+
+  .pc-body {
+    grid-template-columns: 1fr;
+  }
+
+  .pc-sidebar {
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 14px;
+  }
+
+  .pc-logo {
+    display: none;
+  }
+
+  .pc-app {
+    padding: 20px;
+  }
+
+  .pc-app-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .pc-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .pc-app-header h2 {
+    font-size: 26px;
+  }
+}
