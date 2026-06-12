@@ -1,7 +1,6 @@
 :root{
   --bg:#f4f7fb;
   --surface:#ffffff;
-  --surface-2:#eef3ff;
   --text:#101828;
   --muted:#667085;
   --line:#d9e2ec;
@@ -69,9 +68,7 @@ main,
   font-size:15px;
 }
 
-.menu a:hover{
-  color:var(--accent);
-}
+.menu a:hover{color:var(--accent)}
 
 .hero{
   min-height:calc(100vh - 82px);
@@ -132,9 +129,7 @@ button{
 }
 
 .button:hover,
-button:hover{
-  transform:translateY(-2px);
-}
+button:hover{transform:translateY(-2px)}
 
 .button.secondary{
   background:white;
@@ -150,7 +145,7 @@ button:hover{
   padding:28px;
   box-shadow:var(--shadow);
   backdrop-filter:blur(18px);
-  min-height:390px;
+  min-height:420px;
 }
 
 .system-top{
@@ -185,33 +180,123 @@ button:hover{
 }
 
 .system-preview{
+  min-height:210px;
   display:grid;
   gap:12px;
 }
 
-.system-row{
+.status-row,
+.invoice-card,
+.invoice-total,
+.ticket,
+.task,
+.portal-grid div,
+.stamp-card{
+  background:#f8fafc;
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:15px 16px;
+}
+
+.status-row,
+.invoice-card,
+.invoice-total,
+.stamp-card{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:16px;
-  border-radius:16px;
+}
+
+.calendar-grid{
+  display:grid;
+  grid-template-columns:repeat(5, 1fr);
+  gap:8px;
+}
+
+.calendar-grid span{
+  color:var(--muted);
+  font-size:12px;
+  font-weight:800;
+}
+
+.calendar-grid div{
+  min-height:42px;
+  border-radius:12px;
   background:#f8fafc;
   border:1px solid var(--line);
 }
 
-.system-row span{
-  color:var(--muted);
-  font-weight:750;
+.calendar-grid .busy{
+  display:grid;
+  place-items:center;
+  background:var(--accent-soft);
+  color:var(--accent);
+  font-size:12px;
+  font-weight:900;
 }
 
-.system-row strong{
-  font-size:22px;
+.invoice-head{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:center;
+  margin-bottom:12px;
+}
+
+.invoice-head button{
+  margin:0;
+  padding:10px 14px;
+  font-size:13px;
+  border-radius:10px;
+}
+
+.invoice-total strong{
+  color:var(--accent);
+}
+
+.ticket{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.ticket span{
+  color:var(--accent);
+  font-weight:800;
+}
+
+.task{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:800;
+}
+
+.task input{
+  width:auto;
+}
+
+.portal-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.portal-grid div{
+  font-weight:850;
+  color:var(--accent);
+}
+
+.stamp-time{
+  font-size:34px;
+  font-weight:900;
+  letter-spacing:-.05em;
 }
 
 .system-dots{
   display:flex;
   gap:8px;
-  margin-top:22px;
+  margin-top:20px;
 }
 
 .system-dots button{
