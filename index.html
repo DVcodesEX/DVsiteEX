@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digitale Verk | Digitale verktøy</title>
+  <meta name="description" content="Digitale Verk bygger digitale verktøy som løser konkrete problemer i bedrifter.">
+  <link rel="icon" type="image/png" href="logo.PNG">
+  <link rel="stylesheet" href="styles/main.css?v=500">
+</head>
+<body>
+<header class="site-header">
+  <a href="index.html" class="brand"><span class="brand-mark">DV</span><span>Digitale Verk</span></a>
+  <nav class="menu"><a href="index.html">Hjem</a><a href="demoer.html">Demoer</a><a href="#kontakt">Kontakt</a></nav>
+</header>
+<main id="hjem">
+  <section class="hero">
+    <div class="hero-text">
+      <p class="eyebrow">Digitale systemer under utvikling</p>
+      <h1>Vi bygger digitale verktøy som løser konkrete problemer.</h1>
+      <p class="lead">Digitale Verk utvikler enkle systemer for bedre oversikt, mindre manuelt arbeid og mer ryddige arbeidsprosesser.</p>
+      <div class="hero-actions"><a href="demoer.html" class="button">Prøv demoer</a><a href="#kontakt" class="button secondary">Kontakt</a></div>
+    </div>
+    <div class="system-card" id="systemSlider">
+      <div class="system-top"><span></span><span></span><span></span></div>
+      <p class="system-label">Eksempel</p>
+      <h3 id="systemTitle">Ferieoversikt</h3>
+      <p id="systemText">Planlegg ferie, fravær og godkjenninger i én samlet kalender.</p>
+      <div class="system-preview" id="systemPreview"></div>
+      <div class="system-dots" id="systemDots"></div>
+    </div>
+  </section>
+  <section id="verktoy" class="tools">
+    <p class="section-label">Hva Digitale Verk lager</p>
+    <div class="tool-grid">
+      <article class="tool-card"><span>01</span><h2>Ferieregistrering</h2><p>Ansatte sender ferieønsker, mens ledere får oversikt, status og godkjenning.</p></article>
+      <article class="tool-card"><span>02</span><h2>Booking</h2><p>Systemer for avtaler, tidspunkt, kunder og forespørsler.</p></article>
+      <article class="tool-card"><span>03</span><h2>Faktura og tilbud</h2><p>Lag fakturaer, se status og hold oversikt over kunder og betaling.</p></article>
+      <article class="tool-card"><span>04</span><h2>Stemplingssystem</h2><p>Registrering av arbeidstid, pauser, vakter og timer for ansatte.</p></article>
+    </div>
+  </section>
+  <section class="process">
+    <div><p class="section-label">Målet</p><h2>Systemer som er enkle å bruke.</h2></div>
+    <p>Mange bedrifter bruker fortsatt e-post, regneark og manuelle rutiner til oppgaver som egentlig burde vært samlet i ett enkelt verktøy. Digitale Verk bygger slike løsninger steg for steg.</p>
+  </section>
+  <section id="kontakt" class="contact">
+    <div class="contact-text"><p class="section-label">Kontakt</p><h2>Har du spørsmål?</h2><p>Nettsiden er under utvikling. Du kan likevel sende en e-post dersom du ønsker å komme i kontakt.</p></div>
+    <form action="https://formsubmit.co/kontakt@digitaleverk.no" method="POST" class="contact-form">
+      <input type="hidden" name="_subject" value="Ny e-post fra digitaleverk.no"><input type="hidden" name="_next" value="https://digitaleverk.no/takk.html"><input type="hidden" name="_template" value="table">
+      <input type="text" name="navn" placeholder="Navn" required><input type="email" name="epost" placeholder="E-post" required><textarea name="melding" placeholder="Skriv e-posten din her" required></textarea><button type="submit">Send e-post</button>
+    </form>
+  </section>
+</main>
+<footer class="footer"><p>© 2026 Digitale Verk</p></footer>
+<script src="scripts/main.js?v=500"></script>
+</body>
+</html>
