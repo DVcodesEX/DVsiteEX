@@ -4,253 +4,171 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (!buttons.length || !content) return;
 
-  const demos = {
-    ferie: renderFerie,
-    booking: renderBooking,
-    faktura: renderFaktura,
-    stempling: renderStempling,
-    oppgaver: renderOppgaver,
-    foresporsler: renderForesporsler
+  const demoData = {
+    ferie: {
+      title: "Ferieregistrering",
+      menu: ["Dashboard", "Ferie", "Ansatte", "Godkjenning"],
+      stat1: "12",
+      stat2: "3",
+      label1: "Ferieønsker",
+      label2: "Venter",
+      mainTitle: "Ferieoversikt",
+      action: "Send ferieønske",
+      items: ["Emilie søker 24. juni", "Jonas søker 2. juli", "Martin søker 15. juli"]
+    },
+    booking: {
+      title: "Bookingsystem",
+      menu: ["Kalender", "Kunder", "Avtaler", "Rapport"],
+      stat1: "8",
+      stat2: "2",
+      label1: "Bookinger",
+      label2: "I dag",
+      mainTitle: "Ukeskalender",
+      action: "Ny booking",
+      items: ["09:00 Befaring", "12:30 Service", "14:00 Kundemøte"]
+    },
+    faktura: {
+      title: "Fakturasystem",
+      menu: ["Oversikt", "Fakturaer", "Kunder", "Betaling"],
+      stat1: "48k",
+      stat2: "6",
+      label1: "Utestående",
+      label2: "Fakturaer",
+      mainTitle: "Fakturaoversikt",
+      action: "Lag faktura",
+      items: ["#1042 ASKO Transport", "#1043 Solheim Elektro", "#1044 Nordbygg AS"]
+    },
+    stempling: {
+      title: "Stemplingssystem",
+      menu: ["I dag", "Timeliste", "Ansatte", "Rapport"],
+      stat1: "7,5",
+      stat2: "4",
+      label1: "Timer i dag",
+      label2: "På jobb",
+      mainTitle: "Timeregistrering",
+      action: "Stemple inn",
+      items: ["08:00 Martin inn", "08:15 Emilie inn", "15:30 Jonas ut"]
+    },
+    oppgaver: {
+      title: "Oppgavesystem",
+      menu: ["Oppgaver", "Team", "Prosjekt", "Arkiv"],
+      stat1: "14",
+      stat2: "5",
+      label1: "Oppgaver",
+      label2: "Ferdig",
+      mainTitle: "Aktive oppgaver",
+      action: "Legg til oppgave",
+      items: ["Send tilbud", "Klargjør rapport", "Følg opp kunde"]
+    },
+    foresporsler: {
+      title: "Forespørselssystem",
+      menu: ["Innboks", "Saker", "Kunder", "Status"],
+      stat1: "9",
+      stat2: "2",
+      label1: "Nye saker",
+      label2: "Haster",
+      mainTitle: "Kundehenvendelser",
+      action: "Opprett sak",
+      items: ["Nettsideskjema", "Bookingfeil", "Ny kundeforespørsel"]
+    }
   };
 
   buttons.forEach(button => {
     button.addEventListener("click", function () {
       buttons.forEach(btn => btn.classList.remove("active"));
       button.classList.add("active");
-
-      const demo = button.dataset.demo;
-      demos[demo]();
+      renderDemo(button.dataset.demo);
     });
   });
 
-  renderFerie();
+  renderDemo("ferie");
 
-  function renderFerie() {
+  function renderDemo(type) {
+    const d = demoData[type];
+
     content.innerHTML = `
-      <div class="demo-layout">
-        <div class="demo-panel">
-          <h2>Ferieregistrering</h2>
-          <p>Send inn et ferieønske og se hvordan det havner i en oversikt.</p>
+      <div class="pc-demo">
+        <div class="pc-screen">
+          <div class="pc-topbar">
+            <div class="pc-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="pc-title">${d.title}</div>
+            <div class="pc-user">DV</div>
+          </div>
 
-          <div class="demo-form">
-            <input id="ferieNavn" placeholder="Ansattnavn" value="Martin">
-            <input id="ferieDato" type="date">
-            <button id="leggTilFerie">Send ferieønske</button>
+          <div class="pc-body">
+            <aside class="pc-sidebar">
+              <div class="pc-logo">DV</div>
+              ${d.menu.map((m, i) => `<button class="${i === 0 ? "active" : ""}">${m}</button>`).join("")}
+            </aside>
+
+            <main class="pc-app">
+              <div class="pc-app-header">
+                <div>
+                  <p class="eyebrow">Demo</p>
+                  <h2>${d.mainTitle}</h2>
+                </div>
+                <button id="demoAction">${d.action}</button>
+              </div>
+
+              <div class="pc-stats">
+                <div>
+                  <strong>${d.stat1}</strong>
+                  <span>${d.label1}</span>
+                </div>
+                <div>
+                  <strong>${d.stat2}</strong>
+                  <span>${d.label2}</span>
+                </div>
+              </div>
+
+              <div class="pc-window">
+                <div class="pc-window-head">
+                  <span>Siste aktivitet</span>
+                  <b>Live demo</b>
+                </div>
+
+                <div class="pc-list" id="pcList">
+                  ${d.items.map(item => `
+                    <div class="pc-row">
+                      <span>${item}</span>
+                      <b>Åpen</b>
+                    </div>
+                  `).join("")}
+                </div>
+              </div>
+            </main>
           </div>
         </div>
 
-        <div class="demo-panel">
-          <h2>Ferieønsker</h2>
-          <div class="demo-list" id="ferieListe">
-            <div class="demo-item"><div><strong>Emilie</strong><br><span>24. juni</span></div><b class="demo-badge">Godkjent</b></div>
-            <div class="demo-item"><div><strong>Jonas</strong><br><span>2. juli</span></div><b class="demo-badge">Venter</b></div>
-          </div>
-        </div>
+        <div class="pc-stand"></div>
+        <div class="pc-foot"></div>
       </div>
     `;
 
-    document.getElementById("leggTilFerie").addEventListener("click", function () {
-      const navn = document.getElementById("ferieNavn").value || "Ansatt";
-      const dato = document.getElementById("ferieDato").value || "Ikke valgt";
+    document.getElementById("demoAction").addEventListener("click", function () {
+      const newItem = getNewItem(type);
 
-      document.getElementById("ferieListe").insertAdjacentHTML("afterbegin", `
-        <div class="demo-item">
-          <div><strong>${escapeHtml(navn)}</strong><br><span>${escapeHtml(dato)}</span></div>
-          <b class="demo-badge">Venter</b>
+      document.getElementById("pcList").insertAdjacentHTML("afterbegin", `
+        <div class="pc-row new">
+          <span>${newItem}</span>
+          <b>Ny</b>
         </div>
       `);
     });
   }
 
-  function renderBooking() {
-    content.innerHTML = `
-      <div class="demo-layout">
-        <div class="demo-panel">
-          <h2>Bookingsystem</h2>
-          <p>Legg inn en avtale og se den i kalenderen.</p>
+  function getNewItem(type) {
+    const map = {
+      ferie: "Nytt ferieønske registrert",
+      booking: "Ny booking lagt inn",
+      faktura: "Ny faktura opprettet",
+      stempling: "Ny stempling registrert",
+      oppgaver: "Ny oppgave lagt til",
+      foresporsler: "Ny sak opprettet"
+    };
 
-          <div class="demo-form">
-            <input id="bookingNavn" placeholder="Kunde" value="Kunde AS">
-            <input id="bookingTid" placeholder="Tidspunkt" value="13:00">
-            <button id="leggTilBooking">Legg til booking</button>
-          </div>
-        </div>
-
-        <div class="demo-panel">
-          <h2>Kalender</h2>
-          <div class="demo-calendar" id="bookingKalender">
-            <div class="demo-day"><strong>Man</strong><div class="demo-event">09:00 Befaring</div></div>
-            <div class="demo-day"><strong>Tir</strong></div>
-            <div class="demo-day"><strong>Ons</strong><div class="demo-event">12:30 Service</div></div>
-            <div class="demo-day"><strong>Tor</strong></div>
-            <div class="demo-day"><strong>Fre</strong><div class="demo-event">10:00 Møte</div></div>
-          </div>
-        </div>
-      </div>
-    `;
-
-    document.getElementById("leggTilBooking").addEventListener("click", function () {
-      const navn = document.getElementById("bookingNavn").value || "Ny kunde";
-      const tid = document.getElementById("bookingTid").value || "12:00";
-
-      document.querySelector(".demo-day:nth-child(2)").insertAdjacentHTML("beforeend", `
-        <div class="demo-event">${escapeHtml(tid)} ${escapeHtml(navn)}</div>
-      `);
-    });
+    return map[type] || "Ny aktivitet";
   }
-
-  function renderFaktura() {
-    content.innerHTML = `
-      <div class="demo-layout">
-        <div class="demo-panel">
-          <h2>Fakturasystem</h2>
-          <p>Lag en dummy-faktura og få oversikt over status.</p>
-
-          <div class="demo-form">
-            <input id="fakturaKunde" placeholder="Kunde" value="Nordbygg AS">
-            <input id="fakturaSum" placeholder="Beløp" value="12500">
-            <button id="nyFaktura">+ Ny faktura</button>
-          </div>
-        </div>
-
-        <div class="demo-panel">
-          <h2>Fakturaoversikt</h2>
-          <div class="demo-list" id="fakturaListe">
-            <div class="demo-item"><div><strong>#1042 · ASKO Transport</strong><br><span>18 900 kr</span></div><b class="demo-badge">Sendt</b></div>
-            <div class="demo-item"><div><strong>#1043 · Solheim Elektro</strong><br><span>7 400 kr</span></div><b class="demo-badge">Betalt</b></div>
-          </div>
-        </div>
-      </div>
-    `;
-
-    let nummer = 1044;
-
-    document.getElementById("nyFaktura").addEventListener("click", function () {
-      const kunde = document.getElementById("fakturaKunde").value || "Ny kunde";
-      const sum = document.getElementById("fakturaSum").value || "0";
-
-      document.getElementById("fakturaListe").insertAdjacentHTML("afterbegin", `
-        <div class="demo-item">
-          <div><strong>#${nummer++} · ${escapeHtml(kunde)}</strong><br><span>${escapeHtml(sum)} kr</span></div>
-          <b class="demo-badge">Utkast</b>
-        </div>
-      `);
-    });
-  }
-
-  function renderStempling() {
-    content.innerHTML = `
-      <div class="demo-layout">
-        <div class="demo-panel">
-          <h2>Stemplingssystem</h2>
-          <p>Registrer inn- og utstempling i en enkel timeliste.</p>
-
-          <div class="demo-actions">
-            <button id="stempleInn">Stemple inn</button>
-            <button id="stempleUt">Stemple ut</button>
-          </div>
-        </div>
-
-        <div class="demo-panel">
-          <h2>Timeliste</h2>
-          <div class="demo-list" id="stempelListe">
-            <div class="demo-item"><div><strong>Mandag</strong><br><span>08:00 - 15:30</span></div><b class="demo-badge">7,5 t</b></div>
-          </div>
-        </div>
-      </div>
-    `;
-
-    document.getElementById("stempleInn").addEventListener("click", function () {
-      addStamp("Stemplet inn", new Date().toLocaleTimeString("no-NO", {hour:"2-digit", minute:"2-digit"}));
-    });
-
-    document.getElementById("stempleUt").addEventListener("click", function () {
-      addStamp("Stemplet ut", new Date().toLocaleTimeString("no-NO", {hour:"2-digit", minute:"2-digit"}));
-    });
-
-    function addStamp(label, time) {
-      document.getElementById("stempelListe").insertAdjacentHTML("afterbegin", `
-        <div class="demo-item">
-          <div><strong>${label}</strong><br><span>${time}</span></div>
-          <b class="demo-badge">I dag</b>
-        </div>
-      `);
-    }
-  }
-
-  function renderOppgaver() {
-    content.innerHTML = `
-      <div class="demo-layout">
-        <div class="demo-panel">
-          <h2>Oppgavesystem</h2>
-          <p>Legg til en oppgave og marker den som ferdig.</p>
-
-          <div class="demo-form">
-            <input id="oppgaveTekst" placeholder="Ny oppgave" value="Følge opp kunde">
-            <button id="leggTilOppgave">Legg til oppgave</button>
-          </div>
-        </div>
-
-        <div class="demo-panel">
-          <h2>Oppgaver</h2>
-          <div class="demo-list" id="oppgaveListe">
-            <label class="demo-item"><span>Klargjør rapport</span><input type="checkbox"></label>
-            <label class="demo-item"><span>Send tilbud</span><input type="checkbox" checked></label>
-          </div>
-        </div>
-      </div>
-    `;
-
-    document.getElementById("leggTilOppgave").addEventListener("click", function () {
-      const tekst = document.getElementById("oppgaveTekst").value || "Ny oppgave";
-
-      document.getElementById("oppgaveListe").insertAdjacentHTML("afterbegin", `
-        <label class="demo-item"><span>${escapeHtml(tekst)}</span><input type="checkbox"></label>
-      `);
-    });
-  }
-
-  function renderForesporsler() {
-    content.innerHTML = `
-      <div class="demo-layout">
-        <div class="demo-panel">
-          <h2>Forespørselssystem</h2>
-          <p>Samle henvendelser med status og ansvar.</p>
-
-          <div class="demo-form">
-            <input id="sakNavn" placeholder="Hva gjelder saken?" value="Ny kundeforespørsel">
-            <button id="leggTilSak">Opprett sak</button>
-          </div>
-        </div>
-
-        <div class="demo-panel">
-          <h2>Saker</h2>
-          <div class="demo-list" id="sakListe">
-            <div class="demo-item"><div><strong>Nettsideskjema</strong><br><span>Ansvar: Martin</span></div><b class="demo-badge">Ny</b></div>
-            <div class="demo-item"><div><strong>Bookingfeil</strong><br><span>Ansvar: Emilie</span></div><b class="demo-badge">Pågår</b></div>
-          </div>
-        </div>
-      </div>
-    `;
-
-    document.getElementById("leggTilSak").addEventListener("click", function () {
-      const sak = document.getElementById("sakNavn").value || "Ny sak";
-
-      document.getElementById("sakListe").insertAdjacentHTML("afterbegin", `
-        <div class="demo-item">
-          <div><strong>${escapeHtml(sak)}</strong><br><span>Ansvar: ikke satt</span></div>
-          <b class="demo-badge">Ny</b>
-        </div>
-      `);
-    });
-  }
-
-  function escapeHtml(value) {
-    return String(value)
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("'", "&#039;");
-  }
-}
+});
