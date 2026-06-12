@@ -82,16 +82,16 @@ main{
 }
 
 .hero-logo{
-  width:128px;
-  height:128px;
+  width:150px;
+  height:auto;
   object-fit:contain;
   display:block;
   margin-bottom:34px;
-  padding:10px;
-  background:#f5efe4;
-  border:1px solid rgba(215,184,111,.45);
-  border-radius:50%;
-  box-shadow:0 22px 60px rgba(0,0,0,.30);
+  background:none !important;
+  border:none !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+  padding:0 !important;
 }
 
 h1{
