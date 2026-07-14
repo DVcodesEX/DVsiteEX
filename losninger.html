@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eksempler på løsninger | Digitale Verk</title>
+  <meta name="description" content="Se interaktive eksempler på skreddersydde systemer fra Digitale Verk.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="main.css?v=4">
+  <link rel="stylesheet" href="losninger.css?v=4">
+</head>
+<body>
+  <header class="site-header dark-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html">
+        <img src="logo.svg" alt="" width="42" height="42">
+        <span>Digitale Verk</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mainMenu">
+        Meny
+      </button>
+
+      <nav class="main-menu" id="mainMenu">
+        <a href="index.html">Forside</a>
+        <a href="#solutionTop">Eksempler</a>
+        <a class="nav-contact" href="index.html#kontakt">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="solutionTop">
+    <section class="solutions-intro">
+      <p class="kicker light"><span></span> Interaktive eksempler</p>
+      <h1>Se hvordan hele arbeidsflyter kan samles.</h1>
+      <p>
+        Eksemplene viser bredere løsninger, ikke ferdige standardprodukter.
+        En virkelig løsning bygges rundt bedriftens behov.
+      </p>
+    </section>
+
+    <nav class="solution-switcher" aria-label="Velg løsning">
+      <button class="active" data-solution="service">
+        <span>Oppdrag</span>
+        <strong>Serviceflyt</strong>
+      </button>
+      <button data-solution="academy">
+        <span>Opplæring</span>
+        <strong>Kursportal</strong>
+      </button>
+      <button data-solution="operations">
+        <span>Intern drift</span>
+        <strong>Bedriftsnav</strong>
+      </button>
+    </nav>
+
+    <section class="solution-frame">
+      <div class="solution-frame-top">
+        <div class="window-controls"><i></i><i></i><i></i></div>
+        <strong id="solutionTitle">Serviceflyt</strong>
+        <span>DV</span>
+      </div>
+
+      <div id="solutionContent"></div>
+    </section>
+
+    <section class="solution-note">
+      <span>Eksempeldata</span>
+      <p>
+        Alle navn og data er fiktive. Informasjonen lagres bare midlertidig i nettleseren.
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>
+      <a class="brand footer-brand" href="index.html">
+        <img src="logo.svg" alt="" width="42" height="42">
+        <span>Digitale Verk</span>
+      </a>
+      <p>Fra én oppgave til et komplett bedriftssystem.</p>
+    </div>
+
+    <nav>
+      <a href="index.html">Forside</a>
+      <a href="index.html#kontakt">Kontakt</a>
+    </nav>
+
+    <p>© 2026 Digitale Verk</p>
+  </footer>
+
+  <script src="main.js?v=4"></script>
+  <script src="losninger.js?v=4"></script>
+</body>
+</html>

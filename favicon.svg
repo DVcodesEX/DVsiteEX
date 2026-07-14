@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Digitale Verk">
+  <rect width="64" height="64" rx="8" fill="#0b1020"/>
+  <path d="M14 15h17c11 0 19 6 19 17S42 49 31 49H14V15Zm10 9v16h6c6 0 10-3 10-8s-4-8-10-8h-6Z" fill="#fff"/>
+  <path d="M39 15h11L39 49H28L39 15Z" fill="#2f5bea"/>
+</svg>

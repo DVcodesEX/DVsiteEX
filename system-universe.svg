@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 720">
+  <rect width="900" height="720" fill="#0b1020"/>
+  <g stroke="#25304a" stroke-width="1">
+    <path d="M0 90H900M0 180H900M0 270H900M0 360H900M0 450H900M0 540H900M0 630H900"/>
+    <path d="M90 0V720M180 0V720M270 0V720M360 0V720M450 0V720M540 0V720M630 0V720M720 0V720M810 0V720"/>
+  </g>
+  <circle cx="450" cy="360" r="118" fill="#fff"/>
+  <circle cx="450" cy="360" r="72" fill="#2f5bea"/>
+  <text x="450" y="372" text-anchor="middle" fill="#fff" font-family="Arial" font-size="38" font-weight="700">DV</text>
+  <g fill="#f3d6ad">
+    <rect x="105" y="110" width="190" height="96"/>
+    <rect x="605" y="110" width="190" height="96"/>
+  </g>
+  <g fill="#dfe5ff">
+    <rect x="80" y="505" width="210" height="100"/>
+    <rect x="610" y="505" width="210" height="100"/>
+  </g>
+  <g fill="#b7f3dc">
+    <rect x="75" y="280" width="165" height="92"/>
+    <rect x="660" y="280" width="165" height="92"/>
+  </g>
+  <g stroke="#8da0c4" stroke-width="4" fill="none">
+    <path d="M295 158C360 170 385 225 415 270"/>
+    <path d="M605 158C540 170 515 225 485 270"/>
+    <path d="M240 326C315 326 350 340 375 350"/>
+    <path d="M660 326C585 326 550 340 525 350"/>
+    <path d="M290 555C350 515 390 480 415 447"/>
+    <path d="M610 555C550 515 510 480 485 447"/>
+  </g>
+  <g fill="#0b1020" font-family="Arial">
+    <text x="130" y="145" font-size="17" font-weight="700">KUNDER</text>
+    <text x="130" y="173" font-size="12">CRM · historikk · avtaler</text>
+    <text x="630" y="145" font-size="17" font-weight="700">ANSATTE</text>
+    <text x="630" y="173" font-size="12">timer · ferie · roller</text>
+    <text x="98" y="315" font-size="17" font-weight="700">PROSJEKT</text>
+    <text x="98" y="343" font-size="12">oppgaver · status</text>
+    <text x="684" y="315" font-size="17" font-weight="700">KURS</text>
+    <text x="684" y="343" font-size="12">moduler · tester</text>
+    <text x="105" y="545" font-size="17" font-weight="700">RAPPORTER</text>
+    <text x="105" y="573" font-size="12">KPI · eksport · innsikt</text>
+    <text x="637" y="545" font-size="17" font-weight="700">INTEGRASJONER</text>
+    <text x="637" y="573" font-size="12">API · betaling · økonomi</text>
+  </g>
+</svg>
