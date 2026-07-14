@@ -1,57 +1,637 @@
+```html
 <!DOCTYPE html>
 <html lang="no">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Digitale Verk | Digitale verktøy</title>
-  <meta name="description" content="Digitale Verk bygger digitale verktøy som løser konkrete problemer i bedrifter.">
-  <link rel="icon" type="image/png" href="logo.PNG">
-  <link rel="stylesheet" href="main.css?v=500">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Digitale Verk | Enklere systemer for bedrifter</title>
+
+  <meta
+    name="description"
+    content="Digitale Verk utvikler brukervennlige systemer for ferie, booking, faktura, timer og interne arbeidsprosesser."
+  >
+
+  <link
+    rel="icon"
+    type="image/png"
+    href="logo.PNG"
+  >
+
+  <link
+    rel="stylesheet"
+    href="main.css?v=600"
+  >
 </head>
+
 <body>
-<header class="site-header">
-  <a href="index.html" class="brand"><span class="brand-mark">DV</span><span>Digitale Verk</span></a>
-  <nav class="menu"><a href="index.html">Hjem</a><a href="demoer.html">Demoer</a><a href="#kontakt">Kontakt</a></nav>
-</header>
-<main id="hjem">
-  <section class="hero">
-    <div class="hero-text">
-      <p class="eyebrow">Digitale systemer under utvikling</p>
-      <h1>Vi bygger digitale verktøy som løser konkrete problemer.</h1>
-      <p class="lead">Digitale Verk utvikler enkle systemer for bedre oversikt, mindre manuelt arbeid og mer ryddige arbeidsprosesser.</p>
-      <div class="hero-actions"><a href="demoer.html" class="button">Prøv demoer</a><a href="#kontakt" class="button secondary">Kontakt</a></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+
+      <a href="index.html" class="brand" aria-label="Digitale Verk forside">
+        <span class="brand-mark">DV</span>
+        <span class="brand-name">Digitale Verk</span>
+      </a>
+
+      <nav class="menu" aria-label="Hovedmeny">
+        <a href="#hjem">Hjem</a>
+        <a href="#tjenester">Tjenester</a>
+        <a href="demoer.html">Demoer</a>
+        <a href="#kontakt" class="menu-contact">Kontakt</a>
+      </nav>
+
     </div>
-    <div class="system-card" id="systemSlider">
-      <div class="system-top"><span></span><span></span><span></span></div>
-      <p class="system-label">Eksempel</p>
-      <h3 id="systemTitle">Ferieoversikt</h3>
-      <p id="systemText">Planlegg ferie, fravær og godkjenninger i én samlet kalender.</p>
-      <div class="system-preview" id="systemPreview"></div>
-      <div class="system-dots" id="systemDots"></div>
+  </header>
+
+  <main id="hjem">
+
+    <section class="hero">
+      <div class="hero-content">
+
+        <div class="hero-copy">
+          <p class="eyebrow">
+            Digitale systemer for bedrifter
+          </p>
+
+          <h1>
+            Vi bygger verktøy som gjør arbeidsdagen enklere.
+          </h1>
+
+          <p class="lead">
+            Digitale Verk utvikler brukervennlige systemer for ferie,
+            booking, fakturering, timeregistrering og interne
+            arbeidsprosesser.
+          </p>
+
+          <div class="hero-actions">
+            <a href="demoer.html" class="button button-primary">
+              Utforsk demoene
+            </a>
+
+            <a href="#kontakt" class="button button-secondary">
+              Ta kontakt
+            </a>
+          </div>
+
+          <div class="hero-points">
+            <div class="hero-point">
+              <span class="point-icon">✓</span>
+              <span>Tilpasset bedriftens behov</span>
+            </div>
+
+            <div class="hero-point">
+              <span class="point-icon">✓</span>
+              <span>Enkelt å bruke</span>
+            </div>
+
+            <div class="hero-point">
+              <span class="point-icon">✓</span>
+              <span>Utviklet steg for steg</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-demo">
+          <div class="system-card" id="systemSlider">
+
+            <div class="system-browser">
+              <div class="system-top">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+
+              <div class="system-browser-title">
+                Digitale Verk
+              </div>
+
+              <div class="system-user">
+                DV
+              </div>
+            </div>
+
+            <div class="system-content">
+              <div class="system-sidebar">
+                <div class="system-sidebar-logo">
+                  DV
+                </div>
+
+                <span class="system-nav active">
+                  Oversikt
+                </span>
+
+                <span class="system-nav">
+                  Ansatte
+                </span>
+
+                <span class="system-nav">
+                  Kalender
+                </span>
+
+                <span class="system-nav">
+                  Rapporter
+                </span>
+              </div>
+
+              <div class="system-main">
+                <p class="system-label">
+                  Interaktiv forhåndsvisning
+                </p>
+
+                <h2 id="systemTitle">
+                  Ferieoversikt
+                </h2>
+
+                <p id="systemText">
+                  Planlegg ferie, fravær og godkjenninger i én samlet
+                  oversikt.
+                </p>
+
+                <div
+                  class="system-preview"
+                  id="systemPreview"
+                  aria-live="polite"
+                ></div>
+
+                <div
+                  class="system-dots"
+                  id="systemDots"
+                  aria-label="Velg system"
+                ></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="trust-strip">
+      <div class="trust-inner">
+        <p>
+          Systemer laget for faktiske arbeidsoppgaver
+        </p>
+
+        <div class="trust-items">
+          <span>Ferie</span>
+          <span>Booking</span>
+          <span>Faktura</span>
+          <span>Timer</span>
+          <span>Oppgaver</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="tjenester" class="services-section">
+      <div class="section-heading">
+        <div>
+          <p class="section-label">
+            Hva vi bygger
+          </p>
+
+          <h2>
+            Digitale verktøy tilpasset måten dere jobber på.
+          </h2>
+        </div>
+
+        <p class="section-intro">
+          Vi bygger enkle og oversiktlige løsninger som erstatter
+          unødvendige regneark, manuelle rutiner og spredt informasjon.
+        </p>
+      </div>
+
+      <div class="service-grid">
+
+        <article class="service-card">
+          <div class="service-number">01</div>
+
+          <div class="service-icon">
+            FR
+          </div>
+
+          <h3>
+            Ferie og fravær
+          </h3>
+
+          <p>
+            Ansatte sender inn ferieønsker, mens ledere får oversikt,
+            status og mulighet til å godkjenne.
+          </p>
+
+          <ul>
+            <li>Ferieforespørsler</li>
+            <li>Godkjenning</li>
+            <li>Kalenderoversikt</li>
+          </ul>
+
+          <a href="demoer.html" class="service-link">
+            Se feriedemo
+            <span>→</span>
+          </a>
+        </article>
+
+        <article class="service-card">
+          <div class="service-number">02</div>
+
+          <div class="service-icon">
+            BK
+          </div>
+
+          <h3>
+            Booking og avtaler
+          </h3>
+
+          <p>
+            Samle kunder, tidspunkt og avtaler i et system som er enkelt
+            å bruke for både ansatte og kunder.
+          </p>
+
+          <ul>
+            <li>Kunderegister</li>
+            <li>Kalender</li>
+            <li>Avtalestatus</li>
+          </ul>
+
+          <a href="demoer.html" class="service-link">
+            Se bookingdemo
+            <span>→</span>
+          </a>
+        </article>
+
+        <article class="service-card">
+          <div class="service-number">03</div>
+
+          <div class="service-icon">
+            FA
+          </div>
+
+          <h3>
+            Faktura og tilbud
+          </h3>
+
+          <p>
+            Opprett fakturaer, hold oversikt over kunder og følg status
+            fra utkast til betaling.
+          </p>
+
+          <ul>
+            <li>Fakturaoversikt</li>
+            <li>Kunder</li>
+            <li>Betalingsstatus</li>
+          </ul>
+
+          <a href="demoer.html" class="service-link">
+            Se fakturademo
+            <span>→</span>
+          </a>
+        </article>
+
+        <article class="service-card">
+          <div class="service-number">04</div>
+
+          <div class="service-icon">
+            TI
+          </div>
+
+          <h3>
+            Timer og oppgaver
+          </h3>
+
+          <p>
+            Registrer arbeidstid, fordel oppgaver og få en tydelig
+            oversikt over det som skal gjøres.
+          </p>
+
+          <ul>
+            <li>Stempling</li>
+            <li>Timelister</li>
+            <li>Oppgavestatus</li>
+          </ul>
+
+          <a href="demoer.html" class="service-link">
+            Se flere demoer
+            <span>→</span>
+          </a>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="demo-highlight">
+      <div class="demo-highlight-copy">
+        <p class="section-label">
+          Interaktive demoer
+        </p>
+
+        <h2>
+          Prøv systemene direkte i nettleseren.
+        </h2>
+
+        <p>
+          Demoene viser hvordan ulike løsninger kan fungere i praksis.
+          Du kan navigere mellom sider, opprette eksempeldata og teste
+          sentrale funksjoner.
+        </p>
+
+        <a href="demoer.html" class="button button-primary">
+          Åpne demoene
+        </a>
+      </div>
+
+      <div class="demo-highlight-panel">
+        <div class="demo-panel-header">
+          <div>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <p>
+            Ferieregistrering
+          </p>
+        </div>
+
+        <div class="demo-panel-body">
+          <aside class="mini-sidebar">
+            <div class="mini-logo">DV</div>
+            <span class="active">Dashboard</span>
+            <span>Ferie</span>
+            <span>Ansatte</span>
+            <span>Godkjenning</span>
+          </aside>
+
+          <div class="mini-content">
+            <div class="mini-heading">
+              <div>
+                <small>Dashboard</small>
+                <h3>Ferieoversikt</h3>
+              </div>
+
+              <button type="button">
+                Ny forespørsel
+              </button>
+            </div>
+
+            <div class="mini-stats">
+              <div>
+                <strong>12</strong>
+                <span>Ferieønsker</span>
+              </div>
+
+              <div>
+                <strong>3</strong>
+                <span>Venter</span>
+              </div>
+            </div>
+
+            <div class="mini-list">
+              <div>
+                <span>Emilie Hansen</span>
+                <b>Godkjent</b>
+              </div>
+
+              <div>
+                <span>Jonas Berg</span>
+                <b>Venter</b>
+              </div>
+
+              <div>
+                <span>Martin Olsen</span>
+                <b>Godkjent</b>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="process-section">
+      <div class="process-heading">
+        <p class="section-label">
+          Slik jobber vi
+        </p>
+
+        <h2>
+          Fra idé til et system som faktisk blir brukt.
+        </h2>
+      </div>
+
+      <div class="process-grid">
+
+        <article class="process-card">
+          <span>01</span>
+          <h3>Kartlegging</h3>
+          <p>
+            Vi går gjennom arbeidsprosessen, utfordringene og hva dere
+            ønsker å gjøre enklere.
+          </p>
+        </article>
+
+        <article class="process-card">
+          <span>02</span>
+          <h3>Prototype</h3>
+          <p>
+            Dere får se en tidlig og klikkbar versjon før hele løsningen
+            utvikles.
+          </p>
+        </article>
+
+        <article class="process-card">
+          <span>03</span>
+          <h3>Utvikling</h3>
+          <p>
+            Systemet bygges steg for steg med testing og justeringer
+            underveis.
+          </p>
+        </article>
+
+        <article class="process-card">
+          <span>04</span>
+          <h3>Levering</h3>
+          <p>
+            Løsningen settes i drift med avtalt oppfølging og videre
+            utvikling.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="about-section">
+      <div class="about-box">
+        <div>
+          <p class="section-label">
+            Hvorfor Digitale Verk
+          </p>
+
+          <h2>
+            Mindre manuelt arbeid. Bedre oversikt.
+          </h2>
+        </div>
+
+        <div class="about-content">
+          <p>
+            Mange bedrifter bruker fortsatt e-post, regneark og manuelle
+            rutiner til oppgaver som burde vært samlet i ett enkelt
+            system.
+          </p>
+
+          <p>
+            Vi lager løsninger som er forståelige, ryddige og tilpasset
+            det bedriften faktisk trenger.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontakt" class="contact-section">
+      <div class="contact-layout">
+
+        <div class="contact-copy">
+          <p class="section-label">
+            Kontakt
+          </p>
+
+          <h2>
+            Har du en arbeidsprosess som bør bli enklere?
+          </h2>
+
+          <p>
+            Fortell kort hva dere ønsker å forbedre. Vi svarer så snart
+            vi kan og ser på hvordan en passende løsning kan bygges.
+          </p>
+
+          <div class="contact-details">
+            <div>
+              <span>E-post</span>
+              <a href="mailto:kontakt@digitaleverk.no">
+                kontakt@digitaleverk.no
+              </a>
+            </div>
+
+            <div>
+              <span>Nettside</span>
+              <p>digitaleverk.no</p>
+            </div>
+          </div>
+        </div>
+
+        <form
+          action="https://formsubmit.co/kontakt@digitaleverk.no"
+          method="POST"
+          class="contact-form"
+        >
+          <input
+            type="hidden"
+            name="_subject"
+            value="Ny henvendelse fra digitaleverk.no"
+          >
+
+          <input
+            type="hidden"
+            name="_next"
+            value="https://digitaleverk.no/takk.html"
+          >
+
+          <input
+            type="hidden"
+            name="_template"
+            value="table"
+          >
+
+          <div class="form-group">
+            <label for="navn">Navn</label>
+
+            <input
+              id="navn"
+              type="text"
+              name="navn"
+              placeholder="Ditt navn"
+              autocomplete="name"
+              required
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="epost">E-post</label>
+
+            <input
+              id="epost"
+              type="email"
+              name="epost"
+              placeholder="navn@bedrift.no"
+              autocomplete="email"
+              required
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="bedrift">Bedrift</label>
+
+            <input
+              id="bedrift"
+              type="text"
+              name="bedrift"
+              placeholder="Bedriftens navn"
+              autocomplete="organization"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="melding">Hva ønsker dere hjelp med?</label>
+
+            <textarea
+              id="melding"
+              name="melding"
+              placeholder="Fortell kort om arbeidsprosessen eller systemet dere ønsker å forbedre."
+              rows="6"
+              required
+            ></textarea>
+          </div>
+
+          <button type="submit" class="button button-primary form-button">
+            Send henvendelse
+          </button>
+        </form>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+      <a href="index.html" class="brand footer-brand">
+        <span class="brand-mark">DV</span>
+        <span class="brand-name">Digitale Verk</span>
+      </a>
+
+      <p>
+        Digitale systemer som gjør arbeidsdagen enklere.
+      </p>
+
+      <div class="footer-links">
+        <a href="#hjem">Hjem</a>
+        <a href="demoer.html">Demoer</a>
+        <a href="#kontakt">Kontakt</a>
+      </div>
+
+      <p class="copyright">
+        © 2026 Digitale Verk
+      </p>
+
     </div>
-  </section>
-  <section id="verktoy" class="tools">
-    <p class="section-label">Hva Digitale Verk lager</p>
-    <div class="tool-grid">
-      <article class="tool-card"><span>01</span><h2>Ferieregistrering</h2><p>Ansatte sender ferieønsker, mens ledere får oversikt, status og godkjenning.</p></article>
-      <article class="tool-card"><span>02</span><h2>Booking</h2><p>Systemer for avtaler, tidspunkt, kunder og forespørsler.</p></article>
-      <article class="tool-card"><span>03</span><h2>Faktura og tilbud</h2><p>Lag fakturaer, se status og hold oversikt over kunder og betaling.</p></article>
-      <article class="tool-card"><span>04</span><h2>Stemplingssystem</h2><p>Registrering av arbeidstid, pauser, vakter og timer for ansatte.</p></article>
-    </div>
-  </section>
-  <section class="process">
-    <div><p class="section-label">Målet</p><h2>Systemer som er enkle å bruke.</h2></div>
-    <p>Mange bedrifter bruker fortsatt e-post, regneark og manuelle rutiner til oppgaver som egentlig burde vært samlet i ett enkelt verktøy. Digitale Verk bygger slike løsninger steg for steg.</p>
-  </section>
-  <section id="kontakt" class="contact">
-    <div class="contact-text"><p class="section-label">Kontakt</p><h2>Har du spørsmål?</h2><p>Nettsiden er under utvikling. Du kan likevel sende en e-post dersom du ønsker å komme i kontakt.</p></div>
-    <form action="https://formsubmit.co/kontakt@digitaleverk.no" method="POST" class="contact-form">
-      <input type="hidden" name="_subject" value="Ny e-post fra digitaleverk.no"><input type="hidden" name="_next" value="https://digitaleverk.no/takk.html"><input type="hidden" name="_template" value="table">
-      <input type="text" name="navn" placeholder="Navn" required><input type="email" name="epost" placeholder="E-post" required><textarea name="melding" placeholder="Skriv e-posten din her" required></textarea><button type="submit">Send e-post</button>
-    </form>
-  </section>
-</main>
-<footer class="footer"><p>© 2026 Digitale Verk</p></footer>
-<script src="main.js?v=999"></script>
+  </footer>
+
+  <script src="main.js?v=1000"></script>
+
 </body>
 </html>
+```
